@@ -271,11 +271,7 @@ export default function About() {
             <ScrollAnimation direction="right" delay={0.3}>
               <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl p-8 mb-8 shadow-inner">
                 <div className="w-48 h-48 rounded-2xl overflow-hidden mx-auto shadow-lg border-4 border-white">
-                  <img
-                    src="/images/wassim.png"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/Portfolio/images/wassim.png" alt="Profile" />
                 </div>
               </div>
 
