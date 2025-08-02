@@ -51,7 +51,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 rounded-full overflow-hidden">
                 <img
-                  src="/images/wassim.png"
+                  src="images/wassim.png"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />

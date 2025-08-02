@@ -16,12 +16,12 @@ import { cn } from '@/lib/utils';
 import App from '@/App';
 
 const navigation = [
-  { name: 'Homepage', href: '/', icon: Home },
-  { name: 'Projects', href: '/projects', icon: FolderOpen },
-  { name: 'About', href: '/about', icon: User },
-  { name: 'Store', href: '/store', icon: ShoppingBag },
-  { name: 'Blog', href: '/blog', icon: FileText },
-  { name: 'Contact', href: '/contact', icon: Mail },
+  { name: 'Homepage', href: 'Portfolio/', icon: Home },
+  { name: 'Projects', href: 'Portfolio/projects', icon: FolderOpen },
+  { name: 'About', href: 'Portfolio/about', icon: User },
+  { name: 'Store', href: 'Portfolio/store', icon: ShoppingBag },
+  { name: 'Blog', href: 'Portfolio/blog', icon: FileText },
+  { name: 'Contact', href: 'Portfolio/contact', icon: Mail },
 ];
 
 const socialLinks = [
@@ -42,7 +42,7 @@ export function Sidebar() {
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-lg">
             <div className="w-12 h-12 rounded-full overflow-hidden">
                 <img
-                  src="/images/wassim.png"
+                  src="images/wassim.png"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />

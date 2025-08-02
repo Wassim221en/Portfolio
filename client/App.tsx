@@ -13,13 +13,13 @@ function App() {
     <BrowserRouter>
       <ResponsiveLayout>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="Portfolio/" element={<Index />} />
+          <Route path="Portfolio/projects" element={<Projects />} />
+          <Route path="Portfolio/about" element={<About />} />
+          <Route path="Portfolio/store" element={<Store />} />
+          <Route path="Portfolio/blog" element={<Blog />} />
+          <Route path="Portfolio/contact" element={<Contact />} />
+          <Route path="Portfolio/*" element={<NotFound />} />
         </Routes>
       </ResponsiveLayout>
     </BrowserRouter>

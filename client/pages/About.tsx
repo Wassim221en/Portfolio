@@ -244,8 +244,7 @@ export default function About() {
               <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl p-8 mb-8 shadow-inner">
                 <div className="w-48 h-48 rounded-2xl overflow-hidden mx-auto shadow-lg border-4 border-white">
                   <img
-                    src="/images/wassim.png"
-                    alt="Profile"
+                    src="images/wassim.png"
                     className="w-full h-full object-cover"
                   />
                 </div>
