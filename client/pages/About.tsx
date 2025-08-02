@@ -282,7 +282,7 @@ export default function About() {
                            <img
                               src='images/icpc.png'
                               alt={`ICPC Logo`}
-                              className="w-11 h-11 rounded-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
+                              className="w-11 h-1 rounded-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
                             />
                           </div>
                           <div className="flex-1">
