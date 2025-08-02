@@ -5,6 +5,7 @@ import Projects from "@/pages/Projects";
 import About from "@/pages/About";
 import Store from "@/pages/Store";
 import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
@@ -15,9 +16,10 @@ function App() {
         <Routes>
           <Route path="Portfolio/" element={<Index />} />
           <Route path="Portfolio/projects" element={<Projects />} />
-          <Route path="Portfolio/about" element={<About />} />
+          <Route path="Portfolio/about" element={<About />} />  
           <Route path="Portfolio/store" element={<Store />} />
           <Route path="Portfolio/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="Portfolio/contact" element={<Contact />} />
           <Route path="Portfolio/*" element={<NotFound />} />
         </Routes>
