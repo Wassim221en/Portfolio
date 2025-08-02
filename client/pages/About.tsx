@@ -38,6 +38,7 @@ import {
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Services } from "@/components/Services";
 import { url } from "inspector";
+import CodeforcesCard from "@/components/ProblemSolved";
 export default function About() {
 
   const tools = [
@@ -197,7 +198,7 @@ export default function About() {
 
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         {/* Left Content */}
         <div className="w-full lg:w-[680px] xl:w-[720px] 2xl:w-[600px]">
@@ -380,7 +381,7 @@ export default function About() {
         </div>
 
         {/* Right Content - Profile Image Area */}
-        <div className="hidden lg:block lg:pl-16 w-[-200px] ml-6">
+        <div className="hidden lg:block lg:pl-16 w-[-200px] ml-0">
 
           <div className="relative">
             {/* Profile Image */}
@@ -432,11 +433,12 @@ export default function About() {
               </ScrollAnimation>
 
               <ScrollAnimation direction="right" delay={0.8}>
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-12">
                   <div className="text-2xl font-bold text-green-600">+1e18</div>
                   <div className="text-sm text-gray-600">Happy Clients</div>
                 </div>
               </ScrollAnimation>
+              <CodeforcesCard/>
             </div>
           </div>
         </div>
