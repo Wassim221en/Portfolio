@@ -10,8 +10,10 @@ import {
   Twitter,
   Linkedin,
   Dribbble,
-  Code
+  Code,
+  Gitlab,
 } from 'lucide-react';
+import { SiCodeforces, SiWhatsapp} from 'react-icons/si';
 import { cn } from '@/lib/utils';
 import App from '@/App';
 
@@ -26,8 +28,10 @@ const navigation = [
 
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/wassim-alshami-wassim221e/', icon: Linkedin },
-  { name: 'CodeForces', href: 'https://codeforces.com/profile/Wassim221e', icon: Code },
-  { name: 'WhatsApp', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: Code },
+  { name: 'CodeForces', href: 'https://codeforces.com/profile/Wassim221e', icon: SiCodeforces },
+  { name: 'WhatsApp', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: SiWhatsapp },
+  { name: 'Github', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: Github },
+  { name: 'Gitlab', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: Gitlab },
   
 ];
 
