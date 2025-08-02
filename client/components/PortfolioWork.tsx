@@ -15,7 +15,7 @@ export function PortfolioWork() {
   ];
 
   return (
-    <section className="mt-12 lg:mt-16">
+    <section className="mt-12 lg:mt-16 mb-16">
       <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 lg:mb-8">Selected Work</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {projects.map((project) => (

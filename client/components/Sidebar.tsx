@@ -9,9 +9,11 @@ import {
   Github,
   Twitter,
   Linkedin,
-  Dribbble
+  Dribbble,
+  Code
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import App from '@/App';
 
 const navigation = [
   { name: 'Homepage', href: '/', icon: Home },
@@ -23,9 +25,10 @@ const navigation = [
 ];
 
 const socialLinks = [
-  { name: 'Dribbble', href: '#', icon: Dribbble },
-  { name: 'Twitter', href: '#', icon: Twitter },
-  { name: 'LinkedIn', href: '#', icon: Linkedin },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/wassim-alshami-wassim221e/', icon: Linkedin },
+  { name: 'CodeForces', href: 'https://codeforces.com/profile/Wassim221e', icon: Code },
+  { name: 'WhatsApp', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: Code },
+  
 ];
 
 export function Sidebar() {
@@ -38,8 +41,11 @@ export function Sidebar() {
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-lg">
             <div className="w-12 h-12 rounded-full overflow-hidden">
-                <img src="/Portfolio/images/wassim.png" alt="Profile" />
-
+                <img
+                  src="/images/wassim.png"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
           </div>
           <div>

@@ -50,8 +50,11 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
             {/* Profile info on mobile */}
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 rounded-full overflow-hidden">
-                <img src="/Portfolio/images/wassim.png" alt="Profile" />
-
+                <img
+                  src="/images/wassim.png"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <div className="text-right">

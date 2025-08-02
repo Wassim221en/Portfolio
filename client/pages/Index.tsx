@@ -2,6 +2,7 @@ import { MapPin, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { PortfolioWork } from '@/components/PortfolioWork';
+import { Services } from '@/components/Services';
 
 export default function Index() {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -82,6 +83,8 @@ export default function Index() {
 
       {/* Portfolio Work Section */}
       <PortfolioWork />
+      {/* Service Section */}
+      <Services/>
     </div>
   );
 }
