@@ -18,7 +18,7 @@
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
     "predeploy": "npm run build:client",
-    "deploy": "gh-pages -d dist/spa",
+    "deploy": "cp dist/spa/index.html dist/spa/404.html && gh-pages -d dist/spa",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
