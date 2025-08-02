@@ -1,48 +1,145 @@
-import { Code, Palette, Users, Zap, Database, Settings, Wrench, GraduationCap, Briefcase, Calendar, Bug, Computer, BellElectric, BellElectricIcon, FastForward, FastForwardIcon } from 'lucide-react';
-import { ScrollAnimation } from '@/components/ScrollAnimation';
-import { optimizedAppearDataAttribute } from 'framer-motion';
-import { Services } from '@/components/Services';
+import {
+  Code,
+  Palette,
+  Users,
+  Zap,
+  Database,
+  Settings,
+  Wrench,
+  GraduationCap,
+  Briefcase,
+  Calendar,
+  Bug,
+  Computer,
+  BellElectric,
+  FastForward,
+  Code2,
+  Braces,
+  ServerCog,
+  Layers,
+  SatelliteDish,
+  Plug,
+  MessageCircle,
+  Dock,
+  GitBranch,
+  Gauge,
+  ShieldCheck,
+  Landmark,
+  LayoutTemplate,
+  TerminalSquare,
+  TestTube,
+  Eye,
+  Rocket,
+  Search
+} from "lucide-react";
 
+import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { Services } from "@/components/Services";
 export default function About() {
 
-  const tools = [
-    {
-      name: 'C#',
-      category: '',
-      icon: '🎨',
-      color: 'bg-purple-100 text-purple-700'
-    },
-    {
-      name: 'EFCore',
-      category: '',
-      icon: '🎯',
-      color: 'bg-red-100 text-red-700'
-    },
-    {
-      name: 'Asp.Net',
-      category: '',
-      icon: '⚡',
-      color: 'bg-yellow-100 text-yellow-700'
-    },
-    {
-      name: 'SQL Server',
-      category: '',
-      icon: '🔄',
-      color: 'bg-blue-100 text-blue-700'
-    },
-    {
-      name: 'PostgreSQL',
-      category: '',
-      icon: '💫',
-      color: 'bg-green-100 text-green-700'
-    },
-    {
-      name: 'RabbitMQ',
-      category: '',
-      icon: '🤝',
-      color: 'bg-orange-100 text-orange-700'
-    }
-  ];
+ const tools = [
+  // Languages & Frameworks
+  {
+    name: "ASP.NET Core",
+    category: "Framework",
+    icon: <ServerCog className="w-6 h-6" />,
+    color: "bg-indigo-100 text-indigo-700",
+  },
+  {
+    name: "EF Core",
+    category: "ORM",
+    icon: <Layers className="w-6 h-6" />,
+    color: "bg-red-100 text-red-700",
+  },
+
+  // Databases
+  {
+    name: "PostgreSQL/SQL Server",
+    category: "Database",
+    icon: <Database className="w-6 h-6" />,
+    color: "bg-green-100 text-green-700",
+  },
+  {
+    name: "Elasticsearch / OpenSearch",
+    icon: <Search className="w-6 h-6" />,
+    color: "bg-indigo-100 text-indigo-700",
+    level: "Intermediate",
+  },
+  {
+    name: "Redis",
+    category: "Caching",
+    icon: <Rocket className="w-6 h-6" />,
+    color: "bg-rose-100 text-rose-700",
+  },
+
+  // Communication & Messaging
+  {
+    name: "RabbitMQ",
+    category: "Messaging",
+    icon: <MessageCircle className="w-6 h-6" />,
+    color: "bg-orange-100 text-orange-700",
+  },
+  {
+    name: "SignalR",
+    category: "Realtime",
+    icon: <SatelliteDish className="w-6 h-6" />,
+    color: "bg-pink-100 text-pink-700",
+  },
+  {
+    name: "gRPC",
+    category: "RPC Protocol",
+    icon: <Plug className="w-6 h-6" />,
+    color: "bg-yellow-100 text-yellow-700",
+  },
+
+  // DevOps & Tools
+  {
+    name: "Docker",
+    category: "Containerization",
+    icon: <Dock  className="w-6 h-6" />,
+    color: "bg-cyan-100 text-cyan-700",
+  },
+
+  // Architecture & Patterns
+  {
+    name: "Clean Architecture",
+    category: "Architecture",
+    icon: <Landmark className="w-6 h-6" />,
+    color: "bg-amber-100 text-amber-700",
+  },
+  {
+    name: "CQRS + MediatR",
+    category: "Pattern",
+    icon: <LayoutTemplate className="w-6 h-6" />,
+    color: "bg-violet-100 text-violet-700",
+  },
+  {
+    name: "Background Services",
+    category: "Worker Services",
+    icon: <Zap className="w-6 h-6" />,
+    color: "bg-lime-100 text-lime-700",
+  },
+
+  // Testing & Monitoring
+  {
+    name: "xUnit",
+    category: "Testing",
+    icon: <TestTube className="w-6 h-6" />,
+    color: "bg-lime-100 text-lime-700",
+  },
+  {
+    name: "Serilog",
+    category: "Logging",
+    icon: <Eye className="w-6 h-6" />,
+    color: "bg-teal-100 text-teal-700",
+  },
+  {
+    name: "Health Checks",
+    category: "Monitoring",
+    icon: <ShieldCheck className="w-6 h-6" />,
+    color: "bg-green-100 text-green-700",
+  },
+];
 
   const experience = [
     {
@@ -77,7 +174,7 @@ export default function About() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         {/* Left Content */}
-        <div className="w-full lg:w-auto">
+        <div className="w-full lg:w-[680px] xl:w-[720px] 2xl:w-[600px]">
           <ScrollAnimation direction="left">
             <div className="mb-8">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -237,7 +334,8 @@ export default function About() {
         </div>
 
         {/* Right Content - Profile Image Area */}
-        <div className="hidden lg:block lg:pl-8">
+        <div className="hidden lg:block lg:pl-16 w-[-200px] ml-6">
+
           <div className="relative">
             {/* Profile Image */}
             <ScrollAnimation direction="right" delay={0.3}>
