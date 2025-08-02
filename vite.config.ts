@@ -5,9 +5,10 @@ import { createServer } from "./server";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base:"/Portfolio/",
+  base:"/Portfolio",
   server: {
-    host: "https://github.com/wassim221e-web/",
+    host: "::",
+    port: 8080,
     fs: {
       allow: ["./client", "./shared"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
