@@ -7,8 +7,7 @@ import { createServer } from "./server";
 export default defineConfig(({ mode }) => ({
   base:"/Portfolio/",
   server: {
-    host: "::",
-    port: 8080,
+    host: "https://github.com/wassim221e-web/",
     fs: {
       allow: ["./client", "./shared"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
