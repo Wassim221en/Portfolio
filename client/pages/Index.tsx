@@ -238,8 +238,8 @@ export default function Index() {
         <section className="mb-16 lg:mb-20">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Latest Articles</h2>
-              <p className="text-gray-600">Insights and thoughts on development and design</p>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Latest Articles</h2>
+              <p className="text-gray-600 dark:text-gray-300">Insights and thoughts on development and design</p>
             </div>
             <Link to="/blog">
               <Button variant="outline" className="flex items-center space-x-2">
