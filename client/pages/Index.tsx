@@ -323,36 +323,46 @@ export default function Index() {
       {/* Recommendations Section */}
       <ScrollAnimation direction="up">
         <section className="mb-16 lg:mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What People Say</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Don't just take my word for it. Here's what colleagues and clients have to say about working with me.
-            </p>
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">What People Say</h2>
+              <p className="text-gray-600">Don't just take my word for it</p>
+            </div>
+            <Link to="/recommendations">
+              <Button variant="outline" className="flex items-center space-x-2">
+                <span>View All ({recommendationsData.length})</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            {recommendations.map((recommendation, index) => (
-              <ScrollAnimation key={index} direction="up" delay={0.1 * index}>
-                <Card className="p-8 bg-gradient-to-br from-purple-50 to-blue-50 border-purple-100">
-                  <CardContent className="p-0">
-                    <div className="flex items-start space-x-6">
-                      <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
-                          {recommendation.user.charAt(0)}
-                        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {homeRecommendations.map((recommendation, index) => (
+              <ScrollAnimation key={recommendation.id} direction="up" delay={0.1 * index}>
+                <Card className="p-6 bg-gradient-to-br from-purple-50 to-blue-50 border-purple-100 h-full">
+                  <CardContent className="p-0 h-full flex flex-col">
+                    <div className="flex items-start space-x-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
+                        {recommendation.user.charAt(0)}
                       </div>
-                      <div className="flex-1">
-                        <Quote className="w-8 h-8 text-purple-400 mb-4" />
-                        <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                          "{recommendation.body}"
-                        </blockquote>
-                        <div className="flex items-center">
-                          <div>
-                            <h4 className="font-semibold text-gray-900">{recommendation.user}</h4>
-                            <p className="text-purple-600 text-sm">{recommendation.position}</p>
-                          </div>
-                        </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-gray-900 text-lg">
+                          {recommendation.user}
+                        </h4>
+                        <p className="text-purple-600 text-sm font-medium">
+                          {recommendation.position}
+                        </p>
+                        <p className="text-gray-500 text-xs">
+                          {recommendation.company}
+                        </p>
                       </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <Quote className="w-6 h-6 text-purple-300 mb-3" />
+                      <blockquote className="text-gray-700 leading-relaxed italic text-sm line-clamp-4">
+                        "{recommendation.body}"
+                      </blockquote>
                     </div>
                   </CardContent>
                 </Card>
@@ -361,10 +371,9 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-8">
-            <Link to="/about">
-              <Button variant="outline" className="flex items-center space-x-2 mx-auto">
-                <span>Learn More About Me</span>
-                <ArrowRight className="w-4 h-4" />
+            <Link to="/recommendations">
+              <Button className="bg-purple-600 hover:bg-purple-700">
+                Read All Recommendations
               </Button>
             </Link>
           </div>
