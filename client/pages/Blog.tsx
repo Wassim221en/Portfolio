@@ -369,8 +369,8 @@ export default function Blog() {
               <div className="mb-4">
                 <Search className="w-16 h-16 text-gray-300 mx-auto" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No articles found</h3>
-              <p className="text-gray-500">Try adjusting your search or filter criteria.</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No articles found</h3>
+              <p className="text-gray-500 dark:text-gray-400">Try adjusting your search or filter criteria.</p>
             </div>
           )}
         </section>
