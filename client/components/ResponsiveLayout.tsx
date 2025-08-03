@@ -42,7 +42,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
           <div className="flex items-center justify-between">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-md text-gray-600 hover:bg-gray-100 transition-all duration-200 transform hover:scale-105"
+              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 transform hover:scale-105"
             >
               <Menu className="w-6 h-6" />
             </button>
