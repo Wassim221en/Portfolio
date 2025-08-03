@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 import {
   Home,
   FolderOpen,
@@ -13,29 +13,52 @@ import {
   Code,
   Gitlab,
   ThumbsUp,
-} from 'lucide-react';
-import { SiCodeforces, SiWhatsapp} from 'react-icons/si';
-import { cn } from '@/lib/utils';
-import { ThemeToggle } from '@/components/theme-toggle';
-import App from '@/App';
+} from "lucide-react";
+import { SiCodeforces, SiWhatsapp } from "react-icons/si";
+import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
+import App from "@/App";
 
 const navigation = [
-  { name: 'Homepage', href: 'Portfolio/', icon: Home },
-  { name: 'Projects', href: 'Portfolio/projects', icon: FolderOpen },
-  { name: 'About', href: 'Portfolio/about', icon: User },
-  { name: 'Recommendations', href: 'Portfolio/recommendations', icon: ThumbsUp },
-  { name: 'Store', href: 'Portfolio/store', icon: ShoppingBag },
-  { name: 'Blog', href: 'Portfolio/blog', icon: FileText },
-  { name: 'Contact', href: 'Portfolio/contact', icon: Mail },
+  { name: "Homepage", href: "Portfolio/", icon: Home },
+  { name: "Projects", href: "Portfolio/projects", icon: FolderOpen },
+  { name: "About", href: "Portfolio/about", icon: User },
+  {
+    name: "Recommendations",
+    href: "Portfolio/recommendations",
+    icon: ThumbsUp,
+  },
+  { name: "Store", href: "Portfolio/store", icon: ShoppingBag },
+  { name: "Blog", href: "Portfolio/blog", icon: FileText },
+  { name: "Contact", href: "Portfolio/contact", icon: Mail },
 ];
 
 const socialLinks = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/wassim-alshami-wassim221e/', icon: Linkedin },
-  { name: 'CodeForces', href: 'https://codeforces.com/profile/Wassim221e', icon: SiCodeforces },
-  { name: 'WhatsApp', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: SiWhatsapp },
-  { name: 'Github', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: Github },
-  { name: 'Gitlab', href: 'https://wa.me/963933719221?text=Hello%2C%20Wassim', icon: Gitlab },
-  
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/wassim-alshami-wassim221e/",
+    icon: Linkedin,
+  },
+  {
+    name: "CodeForces",
+    href: "https://codeforces.com/profile/Wassim221e",
+    icon: SiCodeforces,
+  },
+  {
+    name: "WhatsApp",
+    href: "https://wa.me/963933719221?text=Hello%2C%20Wassim",
+    icon: SiWhatsapp,
+  },
+  {
+    name: "Github",
+    href: "https://wa.me/963933719221?text=Hello%2C%20Wassim",
+    icon: Github,
+  },
+  {
+    name: "Gitlab",
+    href: "https://wa.me/963933719221?text=Hello%2C%20Wassim",
+    icon: Gitlab,
+  },
 ];
 
 export function Sidebar() {
@@ -49,16 +72,20 @@ export function Sidebar() {
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-lg">
               <div className="w-12 h-12 rounded-full overflow-hidden">
-                  <img
-                    src="images/wassim.png"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <img
+                  src="images/wassim.png"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Wassim Alshami</h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Back End Developer</p>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                Wassim Alshami
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                Back End Developer
+              </p>
             </div>
           </div>
           <ThemeToggle />
@@ -78,7 +105,7 @@ export function Sidebar() {
                     "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105",
                     isActive
                       ? "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm"
-                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
+                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white",
                   )}
                 >
                   <item.icon className="w-5 h-5" />

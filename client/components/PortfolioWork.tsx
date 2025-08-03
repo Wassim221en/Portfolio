@@ -2,21 +2,24 @@ export function PortfolioWork() {
   const projects = [
     {
       id: 1,
-      title: 'Project Management Dashboard',
-      image: 'https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg',
-      description: 'A comprehensive project management solution',
+      title: "Project Management Dashboard",
+      image: "https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg",
+      description: "A comprehensive project management solution",
     },
     {
       id: 2,
-      title: 'Analytics Platform',
-      image: 'https://images.pexels.com/photos/5716032/pexels-photo-5716032.jpeg',
-      description: 'Data visualization and analytics dashboard',
+      title: "Analytics Platform",
+      image:
+        "https://images.pexels.com/photos/5716032/pexels-photo-5716032.jpeg",
+      description: "Data visualization and analytics dashboard",
     },
   ];
 
   return (
     <section className="mt-12 lg:mt-16 mb-16">
-      <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-6 lg:mb-8">Selected Work</h2>
+      <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-6 lg:mb-8">
+        Selected Work
+      </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {projects.map((project) => (
           <div key={project.id} className="group cursor-pointer">

@@ -1,12 +1,24 @@
-import { MapPin, Copy, Check, ExternalLink, Github, Calendar, ArrowRight, Clock, User, BookOpen, Quote } from 'lucide-react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { PortfolioWork } from '@/components/PortfolioWork';
-import { Services } from '@/components/Services';
-import { ScrollAnimation } from '@/components/ScrollAnimation';
-import { recommendationsData } from '@/pages/Recommendations';
+import {
+  MapPin,
+  Copy,
+  Check,
+  ExternalLink,
+  Github,
+  Calendar,
+  ArrowRight,
+  Clock,
+  User,
+  BookOpen,
+  Quote,
+} from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { PortfolioWork } from "@/components/PortfolioWork";
+import { Services } from "@/components/Services";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { recommendationsData } from "@/pages/Recommendations";
 
 export default function Index() {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -15,54 +27,60 @@ export default function Index() {
   const featuredProjects = [
     {
       id: 1,
-      title: 'TaskFlow - Project Management App',
-      description: 'A comprehensive project management solution designed for modern teams. Features include task tracking, team collaboration, and progress visualization.',
-      category: 'SaaS',
-      image: 'https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg',
-      tags: ['UI/UX Design', 'React', 'Design System'],
-      year: '2024',
-      status: 'Live',
-      liveUrl: '#',
-      githubUrl: '#'
+      title: "TaskFlow - Project Management App",
+      description:
+        "A comprehensive project management solution designed for modern teams. Features include task tracking, team collaboration, and progress visualization.",
+      category: "SaaS",
+      image: "https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg",
+      tags: ["UI/UX Design", "React", "Design System"],
+      year: "2024",
+      status: "Live",
+      liveUrl: "#",
+      githubUrl: "#",
     },
     {
       id: 2,
-      title: 'ShopEase - E-commerce Platform',
-      description: 'Modern e-commerce platform with focus on user experience and conversion optimization.',
-      category: 'E-commerce',
-      image: 'https://images.pexels.com/photos/5716032/pexels-photo-5716032.jpeg',
-      tags: ['E-commerce', 'Mobile Design', 'UX Research'],
-      year: '2024',
-      status: 'In Development',
-      liveUrl: '#',
-      githubUrl: '#'
-    }
+      title: "ShopEase - E-commerce Platform",
+      description:
+        "Modern e-commerce platform with focus on user experience and conversion optimization.",
+      category: "E-commerce",
+      image:
+        "https://images.pexels.com/photos/5716032/pexels-photo-5716032.jpeg",
+      tags: ["E-commerce", "Mobile Design", "UX Research"],
+      year: "2024",
+      status: "In Development",
+      liveUrl: "#",
+      githubUrl: "#",
+    },
   ];
 
   // Featured blog posts data
   const featuredBlogPosts = [
     {
       id: 1,
-      title: 'The Future of Design Systems: Building for Scale',
-      excerpt: 'How modern design systems are evolving to meet the needs of growing organizations and complex products.',
-      category: 'Design',
-      author: 'Wassim Alshami',
-      date: '2024-03-15',
-      readTime: '8 min read',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg',
-      tags: ['Design Systems', 'Scalability', 'Product Design']
+      title: "The Future of Design Systems: Building for Scale",
+      excerpt:
+        "How modern design systems are evolving to meet the needs of growing organizations and complex products.",
+      category: "Design",
+      author: "Wassim Alshami",
+      date: "2024-03-15",
+      readTime: "8 min read",
+      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
+      tags: ["Design Systems", "Scalability", "Product Design"],
     },
     {
       id: 2,
-      title: 'User Research in the Age of AI: What\'s Changing?',
-      excerpt: 'Exploring how artificial intelligence is transforming user research methods and what designers need to know.',
-      category: 'UX Research',
-      author: 'Wassim Alshami',
-      date: '2024-03-12',
-      readTime: '6 min read',
-      image: 'https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg',
-      tags: ['AI', 'User Research', 'Innovation']
-    }
+      title: "User Research in the Age of AI: What's Changing?",
+      excerpt:
+        "Exploring how artificial intelligence is transforming user research methods and what designers need to know.",
+      category: "UX Research",
+      author: "Wassim Alshami",
+      date: "2024-03-12",
+      readTime: "6 min read",
+      image:
+        "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
+      tags: ["AI", "User Research", "Innovation"],
+    },
   ];
 
   // Get first 2 recommendations for homepage preview
@@ -70,20 +88,20 @@ export default function Index() {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('wassim221e@gmail.com');
+      await navigator.clipboard.writeText("wassim221e@gmail.com");
       setEmailCopied(true);
       setTimeout(() => setEmailCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy email');
+      console.error("Failed to copy email");
     }
   };
 
@@ -107,12 +125,17 @@ export default function Index() {
         </div>
 
         <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mb-6 lg:mb-8">
-          I am Wassim Alshami, a back-end developer with over a year of experience in ASP.NET. I specialize in designing high-performance software and solving complex technical challenges. Passionate about problem-solving, I’ve competed in the ICPC and local contests in Syria, also serving as a coach. With 1,800+ problems solved on Codeforces, I bring strong analytical skills to deliver efficient and innovative solutions.
+          I am Wassim Alshami, a back-end developer with over a year of
+          experience in ASP.NET. I specialize in designing high-performance
+          software and solving complex technical challenges. Passionate about
+          problem-solving, I’ve competed in the ICPC and local contests in
+          Syria, also serving as a coach. With 1,800+ problems solved on
+          Codeforces, I bring strong analytical skills to deliver efficient and
+          innovative solutions.
         </p>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
-          <Button
-            className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-medium w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+          <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-medium w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
             <a
               href="https://drive.google.com/file/d/1C7aeidZVG5FdZRj3iNylxKYXIQok_7Pb/view"
               target="_blank"
@@ -121,8 +144,7 @@ export default function Index() {
               My CV
             </a>
           </Button>
-          <Button
-            className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-medium w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+          <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-medium w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
             <a
               href="https://gitlab.com/wassim221e"
               target="_blank"
@@ -156,8 +178,12 @@ export default function Index() {
         <section className="mb-16 lg:mb-20">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Featured Projects</h2>
-              <p className="text-gray-600 dark:text-gray-300">Some of my recent work that I'm proud of</p>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Featured Projects
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Some of my recent work that I'm proud of
+              </p>
             </div>
             <Link to="/projects">
               <Button variant="outline" className="flex items-center space-x-2">
@@ -169,7 +195,11 @@ export default function Index() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
-              <ScrollAnimation key={project.id} direction="up" delay={0.1 * index}>
+              <ScrollAnimation
+                key={project.id}
+                direction="up"
+                delay={0.1 * index}
+              >
                 <div className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
                     <img
@@ -179,11 +209,13 @@ export default function Index() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-4 left-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        project.status === 'Live'
-                          ? 'bg-green-100 text-green-700'
-                          : 'bg-yellow-100 text-yellow-700'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          project.status === "Live"
+                            ? "bg-green-100 text-green-700"
+                            : "bg-yellow-100 text-yellow-700"
+                        }`}
+                      >
                         {project.status}
                       </span>
                     </div>
@@ -204,14 +236,20 @@ export default function Index() {
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm text-purple-600 font-medium">{project.category}</span>
+                      <span className="text-sm text-purple-600 font-medium">
+                        {project.category}
+                      </span>
                       <span className="text-sm text-gray-500 flex items-center">
                         <Calendar className="w-4 h-4 mr-1" />
                         {project.year}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{project.description}</p>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
@@ -238,8 +276,12 @@ export default function Index() {
         <section className="mb-16 lg:mb-20">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Latest Articles</h2>
-              <p className="text-gray-600 dark:text-gray-300">Insights and thoughts on development and design</p>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Latest Articles
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Insights and thoughts on development and design
+              </p>
             </div>
             <Link to="/blog">
               <Button variant="outline" className="flex items-center space-x-2">
@@ -273,7 +315,9 @@ export default function Index() {
                   </div>
 
                   <div className="p-6">
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{post.excerpt}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                      {post.excerpt}
+                    </p>
 
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                       <div className="flex items-center space-x-4">
@@ -318,15 +362,19 @@ export default function Index() {
       </ScrollAnimation>
 
       {/* Service Section */}
-      <Services/>
+      <Services />
 
       {/* Recommendations Section */}
       <ScrollAnimation direction="up">
         <section className="mb-16 lg:mb-20">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">What People Say</h2>
-              <p className="text-gray-600 dark:text-gray-300">Don't just take my word for it</p>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                What People Say
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Don't just take my word for it
+              </p>
             </div>
             <Link to="/recommendations">
               <Button variant="outline" className="flex items-center space-x-2">
@@ -338,7 +386,11 @@ export default function Index() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {homeRecommendations.map((recommendation, index) => (
-              <ScrollAnimation key={recommendation.id} direction="up" delay={0.1 * index}>
+              <ScrollAnimation
+                key={recommendation.id}
+                direction="up"
+                delay={0.1 * index}
+              >
                 <Card className="p-6 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-purple-100 dark:border-purple-800 h-full">
                   <CardContent className="p-0 h-full flex flex-col">
                     <div className="flex items-start space-x-4 mb-4">

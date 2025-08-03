@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Sidebar } from './Sidebar';
-import { PageTransition } from './PageTransition';
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { Sidebar } from "./Sidebar";
+import { PageTransition } from "./PageTransition";
 
 interface ResponsiveLayoutProps {
   children: React.ReactNode;
@@ -28,10 +28,12 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
       )}
 
       {/* Sidebar */}
-      <div className={`
+      <div
+        className={`
         fixed inset-y-0 left-0 z-50 w-64 transform transition-all duration-300 ease-in-out lg:translate-x-0
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-      `}>
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+      `}
+      >
         <Sidebar />
       </div>
 
@@ -58,8 +60,12 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
               </div>
 
               <div className="text-right">
-                <h2 className="text-sm font-semibold text-gray-900 dark:text-white">Wassim Alshami</h2>
-                <p className="text-xs text-gray-600 dark:text-gray-300">Back End Developer</p>
+                <h2 className="text-sm font-semibold text-gray-900 dark:text-white">
+                  Wassim Alshami
+                </h2>
+                <p className="text-xs text-gray-600 dark:text-gray-300">
+                  Back End Developer
+                </p>
               </div>
             </div>
           </div>
@@ -67,9 +73,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
 
         {/* Page content */}
         <main className="flex-1 overflow-auto">
-          <PageTransition>
-            {children}
-          </PageTransition>
+          <PageTransition>{children}</PageTransition>
         </main>
       </div>
     </div>
