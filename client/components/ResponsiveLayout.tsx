@@ -13,7 +13,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
-  // إغلاق ا��قائمة الجانبية عند التنقل لصفحة جديدة
+  // إغلاق القائمة الجانبية عند التنقل لصفحة جديدة
   useEffect(() => {
     setSidebarOpen(false);
   }, [location.pathname]);
@@ -37,7 +37,14 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
   });
 
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 relative">
+      {/* منطقة السحب الحساسة من الحافة اليسرى للموبايل */}
+      <div className="fixed left-0 top-0 h-full w-4 z-30 lg:hidden" />
+
+      {/* منطقة السحب للإغلاق عند فتح السايدبار */}
+      {sidebarOpen && (
+        <div className="fixed right-0 top-0 h-full w-16 z-30 lg:hidden" />
+      )}
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
