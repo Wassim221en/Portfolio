@@ -191,7 +191,7 @@ export default function Projects() {
             
             {/* Filter Buttons */}
             <div className="flex items-center space-x-2 overflow-x-auto pb-2">
-              <Filter className="w-5 h-5 text-gray-500 flex-shrink-0" />
+              <Filter className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
               <div className="flex space-x-2">
                 {categories.map((category) => (
                   <Button
