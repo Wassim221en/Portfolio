@@ -45,11 +45,15 @@ export function useSwipeGesture({
       const deltaX = currentX - startX.current;
       const deltaY = currentY - startY.current;
 
-      // Check if this is more of a horizontal swipe than vertical
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+      // التحقق من أن هذا سحب أفقي وليس عمودي
+      const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
+      const hasMinimumDistance = Math.abs(deltaX) > 15;
+
+      if (isHorizontalSwipe && hasMinimumDistance) {
         isSwipingRef.current = true;
-        
-        if (preventScroll) {
+
+        // منع التمرير العمودي أثناء السحب الأفقي
+        if (preventScroll || isSwipingRef.current) {
           e.preventDefault();
         }
       }
