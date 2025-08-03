@@ -210,8 +210,8 @@ export default function Index() {
                         {project.year}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{project.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{project.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
