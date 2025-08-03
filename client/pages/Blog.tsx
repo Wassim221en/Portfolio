@@ -195,7 +195,7 @@ export default function Blog() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredPosts.map((post, index) => (
               <ScrollAnimation key={post.id} direction="up" delay={0.1 * index}>
-                <article className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+                <article className="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
                     <img 
                       src={post.image} 
