@@ -189,11 +189,11 @@ export default function Recommendations() {
       {/* Call to Action */}
       <ScrollAnimation direction="up" delay={0.3}>
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 lg:p-12 border border-purple-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-3xl p-8 lg:p-12 border border-purple-100 dark:border-purple-800">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Want to Work Together?
             </h2>
-            <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
               I'm always open to new opportunities and exciting projects. 
               Let's discuss how we can create something amazing together.
             </p>
