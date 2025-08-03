@@ -170,7 +170,7 @@ export default function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
               <ScrollAnimation key={project.id} direction="up" delay={0.1 * index}>
-                <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
                     <img
                       src={project.image}
