@@ -56,12 +56,19 @@ export function useSwipeGesture({
 
       const endX = e.changedTouches[0].clientX;
       const deltaX = endX - startX.current;
+      const deltaY = e.changedTouches[0].clientY - startY.current;
 
-      // Check if swipe distance meets threshold
-      if (Math.abs(deltaX) >= threshold) {
-        if (deltaX > 0 && onSwipeRight) {
+      // التأكد من أن هذا swipe أفقي حقيقي
+      const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY) * 2;
+
+      // Check if swipe distance meets threshold and is horizontal
+      if (Math.abs(deltaX) >= threshold && isHorizontalSwipe) {
+        // للسحب من اليمين (فتح): يجب أن يبدأ من الحافة اليسرى
+        if (deltaX > 0 && onSwipeRight && startX.current <= edgeThreshold) {
           onSwipeRight();
-        } else if (deltaX < 0 && onSwipeLeft) {
+        }
+        // للسحب من اليسار (إغلاق): يمكن من أي مكان
+        else if (deltaX < 0 && onSwipeLeft) {
           onSwipeLeft();
         }
       }
