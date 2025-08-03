@@ -204,10 +204,10 @@ export default function About() {
         <div className="w-full lg:w-[680px] xl:w-[720px] 2xl:w-[600px]">
           <ScrollAnimation direction="left">
             <div className="mb-8">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Wassim Alshami
               </h1>
-              <h2 className="text-2xl lg:text-3xl font-semibold text-gray-600 mb-8">
+              <h2 className="text-2xl lg:text-3xl font-semibold text-gray-600 dark:text-gray-300 mb-8">
                 Back End Developer
               </h2>
             </div>
