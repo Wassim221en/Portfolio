@@ -13,10 +13,28 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
-  // إ��لاق القائمة الجانبية عند التنقل لصفحة جديدة
+  // إغلاق ا��قائمة الجانبية عند التنقل لصفحة جديدة
   useEffect(() => {
     setSidebarOpen(false);
   }, [location.pathname]);
+
+  // إضافة دعم السحب للسايدبار على الموبايل والتابليت
+  useSwipeGesture({
+    onSwipeRight: () => {
+      // فتح السايدبار عند السحب من اليسار لليمين
+      if (window.innerWidth < 1024 && !sidebarOpen) {
+        setSidebarOpen(true);
+      }
+    },
+    onSwipeLeft: () => {
+      // إغلاق السايدبار عند السحب من اليمين لليسار
+      if (window.innerWidth < 1024 && sidebarOpen) {
+        setSidebarOpen(false);
+      }
+    },
+    threshold: 80, // المسافة المطلوبة للسحب
+    preventScroll: false, // السماح بالتمرير العادي
+  });
 
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
