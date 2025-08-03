@@ -312,12 +312,12 @@ export default function Blog() {
                   </div>
                   
                   <div className="p-5">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       {post.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-                    
-                    <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
+
+                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-3">
                       <span className="flex items-center">
                         <User className="w-3 h-3 mr-1" />
                         {post.author}
