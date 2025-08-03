@@ -320,15 +320,15 @@ export default function About() {
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                 {tools.map((tool, index) => (
                   <ScrollAnimation key={index} direction="fade" delay={0.1 * index}>
-                    <div className="bg-white p-4 rounded-xl border border-gray-200 hover:shadow-md transition-all duration-300 transform hover:scale-110">
+                    <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:scale-110">
                       <div className="text-center">
                         <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${tool.color} text-2xl mb-3`}>
                           {tool.icon}
                         </div>
-                        <h4 className="font-semibold text-gray-900 text-sm mb-1">
+                        <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1">
                           {tool.name}
                         </h4>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
                           {tool.category}
                         </p>
                       </div>
