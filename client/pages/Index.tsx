@@ -1,8 +1,11 @@
-import { MapPin, Copy, Check } from 'lucide-react';
+import { MapPin, Copy, Check, ExternalLink, Github, Calendar, ArrowRight, Clock, User, BookOpen, Quote } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { PortfolioWork } from '@/components/PortfolioWork';
 import { Services } from '@/components/Services';
+import { ScrollAnimation } from '@/components/ScrollAnimation';
 
 export default function Index() {
   const [emailCopied, setEmailCopied] = useState(false);
