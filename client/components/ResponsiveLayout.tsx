@@ -21,18 +21,20 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
   // إضافة دعم السحب للسايدبار على الموبايل والتابليت
   useSwipeGesture({
     onSwipeRight: () => {
-      // فتح السايدبار عند السحب من اليسار لليمين
-      if (window.innerWidth < 1024 && !sidebarOpen) {
+      // فتح السايدبار عند السحب من اليسار لليمين (فقط على الشاشات الصغيرة)
+      const isMobile = window.innerWidth < 1024;
+      if (isMobile && !sidebarOpen) {
         setSidebarOpen(true);
       }
     },
     onSwipeLeft: () => {
-      // إغلاق السايدبار عند السحب من اليمين لليسار
-      if (window.innerWidth < 1024 && sidebarOpen) {
+      // إغلاق السايدبار عند السحب من اليمين لليسار (فقط إذا كان مفتوح)
+      const isMobile = window.innerWidth < 1024;
+      if (isMobile && sidebarOpen) {
         setSidebarOpen(false);
       }
     },
-    threshold: 80, // المسافة المطلوبة للسحب
+    threshold: 60, // المسافة المطلوبة للسحب
     preventScroll: false, // السماح بالتمرير العادي
   });
 
