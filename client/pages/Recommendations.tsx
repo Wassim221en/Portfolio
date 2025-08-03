@@ -136,17 +136,17 @@ export default function Recommendations() {
                       {recommendation.user.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900 text-lg mb-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-white text-lg mb-1">
                         {recommendation.user}
                       </h3>
-                      <p className="text-purple-600 font-medium text-sm mb-1">
+                      <p className="text-purple-600 dark:text-purple-400 font-medium text-sm mb-1">
                         {recommendation.position}
                       </p>
-                      <div className="flex items-center text-gray-500 text-sm mb-2">
+                      <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-2">
                         <Building className="w-3 h-3 mr-1" />
                         <span className="truncate">{recommendation.company}</span>
                       </div>
-                      <div className="flex items-center text-gray-500 text-xs">
+                      <div className="flex items-center text-gray-500 dark:text-gray-400 text-xs">
                         <MapPin className="w-3 h-3 mr-1" />
                         <span>{recommendation.location}</span>
                       </div>
