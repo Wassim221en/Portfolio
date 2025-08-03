@@ -16,11 +16,11 @@ export function PortfolioWork() {
 
   return (
     <section className="mt-12 lg:mt-16 mb-16">
-      <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 lg:mb-8">Selected Work</h2>
+      <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-6 lg:mb-8">Selected Work</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {projects.map((project) => (
           <div key={project.id} className="group cursor-pointer">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
                 <img
                   src={project.image}
