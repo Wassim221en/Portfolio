@@ -235,7 +235,7 @@ export default function About() {
                     >
                       <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 transition-transform duration-300 hover:scale-105 cursor-pointer">
                         <div className="flex items-start space-x-4">
-                          <div className="bg-blue-100 p-5 rounded-2xl">
+                          <div className="bg-blue-100 dark:bg-blue-900/30 p-5 rounded-2xl">
                             <img
                               src={exp.icon}
                               alt={`${exp.company} Logo`}
