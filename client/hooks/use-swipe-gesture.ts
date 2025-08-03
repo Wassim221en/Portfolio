@@ -47,13 +47,14 @@ export function useSwipeGesture({
 
       // التحقق من أن هذا سحب أفقي وليس عمودي
       const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
-      const hasMinimumDistance = Math.abs(deltaX) > 15;
+      const hasSignificantDistance = Math.abs(deltaX) > 30;
 
-      if (isHorizontalSwipe && hasMinimumDistance) {
+      // فقط اعتبره swipe إذا كان أفقي وبمسافة كبيرة
+      if (isHorizontalSwipe && hasSignificantDistance) {
         isSwipingRef.current = true;
 
-        // منع التمرير العمودي أثناء السحب الأفقي
-        if (preventScroll || isSwipingRef.current) {
+        // منع التمرير فقط عند وجود swipe حقيقي ومطلوب منع التمرير
+        if (preventScroll && isSwipingRef.current) {
           e.preventDefault();
         }
       }
