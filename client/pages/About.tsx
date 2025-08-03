@@ -424,23 +424,23 @@ export default function About() {
             {/* Achievement Cards */}
             <div className="space-y-4 mt-8">
               <ScrollAnimation direction="right" delay={0.4}>
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-                  <div className="text-2xl font-bold text-purple-600">+2</div>
-                  <div className="text-sm text-gray-600">Years Experience</div>
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">+2</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Years Experience</div>
                 </div>
               </ScrollAnimation>
 
               <ScrollAnimation direction="right" delay={0.6}>
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-                  <div className="text-2xl font-bold text-blue-600">+9</div>
-                  <div className="text-sm text-gray-600">Projects Completed</div>
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">+9</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Projects Completed</div>
                 </div>
               </ScrollAnimation>
 
               <ScrollAnimation direction="right" delay={0.8}>
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-12">
-                  <div className="text-2xl font-bold text-green-600">+1e18</div>
-                  <div className="text-sm text-gray-600">Happy Clients</div>
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm mb-12">
+                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">+1e18</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Happy Clients</div>
                 </div>
               </ScrollAnimation>
               <CodeforcesCard/>
