@@ -92,14 +92,14 @@ export default function Index() {
       {/* Hero Section */}
       <div className="mb-12 lg:mb-16">
         <div className="mb-6">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2">
             Hello! I'm Wassim Alshami
           </h1>
           <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-6">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               Back End Developer
             </h2>
-            <div className="flex items-center space-x-1 text-gray-600 mt-2 sm:mt-0">
+            <div className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 mt-2 sm:mt-0">
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="text-base sm:text-lg">Syria</span>
             </div>
