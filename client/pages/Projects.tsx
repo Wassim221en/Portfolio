@@ -106,10 +106,10 @@ export default function Projects() {
       {/* Header */}
       <ScrollAnimation direction="up">
         <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             My Projects
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             A collection of my recent work including web applications, mobile apps, 
             and design systems. Each project represents a unique challenge and solution.
           </p>
