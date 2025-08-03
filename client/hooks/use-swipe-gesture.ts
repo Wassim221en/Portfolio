@@ -16,14 +16,25 @@ export function useSwipeGesture({
   const startX = useRef<number>(0);
   const startY = useRef<number>(0);
   const isSwipingRef = useRef<boolean>(false);
+  const edgeThreshold = 30; // المنطقة من حافة الشاشة للبدء بالسحب
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length !== 1) return;
-      
-      startX.current = e.touches[0].clientX;
-      startY.current = e.touches[0].clientY;
+
+      const touch = e.touches[0];
+      startX.current = touch.clientX;
+      startY.current = touch.clientY;
       isSwipingRef.current = false;
+
+      // للسحب من اليسار: يجب أن يبدأ اللمس من حافة الشاشة اليسرى
+      // للسحب من اليمين: يمكن أن يبدأ من أي مكان إذا كان السايدبار مفتوح
+      const isFromLeftEdge = touch.clientX <= edgeThreshold;
+      const isValidStart = isFromLeftEdge || onSwipeLeft;
+
+      if (!isValidStart) {
+        return;
+      }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
