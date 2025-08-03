@@ -273,7 +273,7 @@ export default function Index() {
                   </div>
 
                   <div className="p-6">
-                    <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{post.excerpt}</p>
 
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                       <div className="flex items-center space-x-4">
