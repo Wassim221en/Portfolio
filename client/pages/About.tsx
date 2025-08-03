@@ -344,7 +344,7 @@ export default function About() {
 
           {/* Education Section */}
           <ScrollAnimation direction="right">
-            <div>
+            <div className="mb-16">
               <h3 className="text-2xl font-bold text-gray-900 mb-8">Education</h3>
               <div className="space-y-6">
                 {education.map((edu, index) => (
@@ -376,6 +376,11 @@ export default function About() {
               </div>
             </div>
           </ScrollAnimation>
+
+          {/* Codeforces Statistics for Mobile/Tablet */}
+          <div className="lg:hidden mb-16">
+            <CodeforcesCard />
+          </div>
 
 
         </div>
