@@ -44,21 +44,24 @@ export function Sidebar() {
   return (
     <div className="w-64 h-screen bg-white border-r border-gray-200 flex flex-col">
       {/* Profile Section */}
-      <div className="p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-lg">
-            <div className="w-12 h-12 rounded-full overflow-hidden">
-                <img
-                  src="images/wassim.png"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-lg">
+              <div className="w-12 h-12 rounded-full overflow-hidden">
+                  <img
+                    src="images/wassim.png"
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Wassim Alshami</h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Back End Developer</p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">Wassim Alshami</h2>
-            <p className="text-sm text-gray-600">Back End Developer</p>
-          </div>
+          <ThemeToggle />
         </div>
       </div>
 
