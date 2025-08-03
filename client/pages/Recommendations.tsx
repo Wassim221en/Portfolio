@@ -117,8 +117,8 @@ export default function Recommendations() {
             <div className="flex items-center space-x-1">
               {renderStars(Math.round(averageRating))}
             </div>
-            <span className="text-2xl font-bold text-gray-900">{averageRating.toFixed(1)}</span>
-            <span className="text-gray-600">({recommendationsData.length} recommendations)</span>
+            <span className="text-2xl font-bold text-gray-900 dark:text-white">{averageRating.toFixed(1)}</span>
+            <span className="text-gray-600 dark:text-gray-300">({recommendationsData.length} recommendations)</span>
           </div>
         </div>
       </ScrollAnimation>
