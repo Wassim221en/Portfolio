@@ -339,7 +339,7 @@ export default function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {homeRecommendations.map((recommendation, index) => (
               <ScrollAnimation key={recommendation.id} direction="up" delay={0.1 * index}>
-                <Card className="p-6 bg-gradient-to-br from-purple-50 to-blue-50 border-purple-100 h-full">
+                <Card className="p-6 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-purple-100 dark:border-purple-800 h-full">
                   <CardContent className="p-0 h-full flex flex-col">
                     <div className="flex items-start space-x-4 mb-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
