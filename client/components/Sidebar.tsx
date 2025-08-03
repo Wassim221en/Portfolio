@@ -22,6 +22,7 @@ const navigation = [
   { name: 'Homepage', href: 'Portfolio/', icon: Home },
   { name: 'Projects', href: 'Portfolio/projects', icon: FolderOpen },
   { name: 'About', href: 'Portfolio/about', icon: User },
+  { name: 'Recommendations', href: 'Portfolio/recommendations', icon: ThumbsUp },
   { name: 'Store', href: 'Portfolio/store', icon: ShoppingBag },
   { name: 'Blog', href: 'Portfolio/blog', icon: FileText },
   { name: 'Contact', href: 'Portfolio/contact', icon: Mail },
