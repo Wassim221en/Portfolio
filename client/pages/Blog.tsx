@@ -267,7 +267,7 @@ export default function Blog() {
       <ScrollAnimation direction="up" delay={0.3}>
         <section>
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 lg:mb-0">All Articles</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-0">All Articles</h2>
             
             {/* Category Filter */}
             <div className="flex items-center space-x-2 overflow-x-auto pb-2 w-full lg:w-auto">
