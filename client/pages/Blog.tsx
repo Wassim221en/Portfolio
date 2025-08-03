@@ -329,7 +329,7 @@ export default function Blog() {
                     </div>
                     
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
                         {formatDate(post.date)}
                       </span>
                       <Link to={`/blog/${post.id}`}>
