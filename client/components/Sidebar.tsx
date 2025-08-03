@@ -12,6 +12,7 @@ import {
   Dribbble,
   Code,
   Gitlab,
+  ThumbsUp,
 } from 'lucide-react';
 import { SiCodeforces, SiWhatsapp} from 'react-icons/si';
 import { cn } from '@/lib/utils';
