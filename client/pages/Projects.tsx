@@ -157,19 +157,19 @@ export default function Projects() {
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm text-purple-600 font-medium">{project.category}</span>
-                      <span className="text-sm text-gray-500 flex items-center">
+                      <span className="text-sm text-purple-600 dark:text-purple-400 font-medium">{project.category}</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
                         <Calendar className="w-4 h-4 mr-1" />
                         {project.year}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{project.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{project.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag, tagIndex) => (
-                        <span 
+                        <span
                           key={tagIndex}
-                          className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
                         >
                           {tag}
                         </span>
