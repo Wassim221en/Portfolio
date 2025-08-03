@@ -349,23 +349,23 @@ export default function About() {
               <div className="space-y-6">
                 {education.map((edu, index) => (
                   <ScrollAnimation key={index} direction="left" delay={0.2 * index}>
-                    <div className="bg-white p-6 rounded-2xl border border-gray-200 transition-transform duration-300 hover:scale-105">
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 transition-transform duration-300 hover:scale-105">
                       <div className="flex items-start space-x-4">
-                        <div className="bg-green-100 p-3 rounded-lg">
-                          <edu.icon className="w-6 h-6 text-green-600" />
+                        <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
+                          <edu.icon className="w-6 h-6 text-green-600 dark:text-green-400" />
                         </div>
                         <div className="flex-1">
                           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                            <h4 className="font-semibold text-gray-900">
+                            <h4 className="font-semibold text-gray-900 dark:text-white">
                               {edu.degree}
                             </h4>
-                            <span className="text-sm text-gray-500 flex items-center">
+                            <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
                               <Calendar className="w-4 h-4 mr-1" />
                               {edu.period}
                             </span>
                           </div>
-                          <p className="text-purple-600 font-medium mb-2">{edu.school}</p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-purple-600 dark:text-purple-400 font-medium mb-2">{edu.school}</p>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">
                             {edu.description}
                           </p>
                         </div>
