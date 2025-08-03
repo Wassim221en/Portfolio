@@ -104,10 +104,10 @@ export default function Recommendations() {
       {/* Header */}
       <ScrollAnimation direction="up">
         <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Recommendations
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
             What colleagues, clients, and mentors have to say about working with me. 
             These testimonials reflect my commitment to excellence and collaborative approach.
           </p>
