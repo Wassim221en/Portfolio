@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Sidebar } from './Sidebar';
-import { PageTransition } from './PageTransition';
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { Sidebar } from "./Sidebar";
+import { PageTransition } from "./PageTransition";
 
 interface ResponsiveLayoutProps {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
@@ -28,21 +28,23 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
       )}
 
       {/* Sidebar */}
-      <div className={`
+      <div
+        className={`
         fixed inset-y-0 left-0 z-50 w-64 transform transition-all duration-300 ease-in-out lg:translate-x-0
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-      `}>
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+      `}
+      >
         <Sidebar />
       </div>
 
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0 lg:ml-64">
         {/* Mobile header */}
-        <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-3 shadow-sm">
+        <div className="lg:hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 shadow-sm">
           <div className="flex items-center justify-between">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-md text-gray-600 hover:bg-gray-100 transition-all duration-200 transform hover:scale-105"
+              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 transform hover:scale-105"
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -58,8 +60,12 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
               </div>
 
               <div className="text-right">
-                <h2 className="text-sm font-semibold text-gray-900">Wassim Alshami</h2>
-                <p className="text-xs text-gray-600">Back End Developer</p>
+                <h2 className="text-sm font-semibold text-gray-900 dark:text-white">
+                  Wassim Alshami
+                </h2>
+                <p className="text-xs text-gray-600 dark:text-gray-300">
+                  Back End Developer
+                </p>
               </div>
             </div>
           </div>
@@ -67,9 +73,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
 
         {/* Page content */}
         <main className="flex-1 overflow-auto">
-          <PageTransition>
-            {children}
-          </PageTransition>
+          <PageTransition>{children}</PageTransition>
         </main>
       </div>
     </div>

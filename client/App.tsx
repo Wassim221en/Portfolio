@@ -3,6 +3,7 @@ import { ResponsiveLayout } from "@/components/ResponsiveLayout";
 import Index from "@/pages/Index";
 import Projects from "@/pages/Projects";
 import About from "@/pages/About";
+import Recommendations from "@/pages/Recommendations";
 import Store from "@/pages/Store";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
@@ -16,7 +17,11 @@ function App() {
         <Routes>
           <Route path="Portfolio/" element={<Index />} />
           <Route path="Portfolio/projects" element={<Projects />} />
-          <Route path="Portfolio/about" element={<About />} />  
+          <Route path="Portfolio/about" element={<About />} />
+          <Route
+            path="Portfolio/recommendations"
+            element={<Recommendations />}
+          />
           <Route path="Portfolio/store" element={<Store />} />
           <Route path="Portfolio/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
