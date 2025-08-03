@@ -175,8 +175,8 @@ export default function Recommendations() {
 
                 {/* Quote */}
                 <div className="flex-1">
-                  <Quote className="w-8 h-8 text-purple-200 mb-4" />
-                  <blockquote className="text-gray-700 leading-relaxed italic">
+                  <Quote className="w-8 h-8 text-purple-200 dark:text-purple-600 mb-4" />
+                  <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed italic">
                     "{recommendation.body}"
                   </blockquote>
                 </div>
