@@ -18,7 +18,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
