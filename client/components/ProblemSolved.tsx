@@ -199,9 +199,9 @@ function CodeforcesStatsCard() {
               <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
                 <span>📈</span> Rating Progress
               </h3>
-              <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600 shadow-sm">
+              <div className="bg-white dark:bg-gray-700 rounded-lg px-0 py-4 border border-gray-200 dark:border-gray-600 shadow-sm">
                 <ResponsiveContainer width="100%" height={200}>
-                  <LineChart data={data.graphData} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
+                  <LineChart data={data.graphData} margin={{ top: 10, right: 0, left: 0, bottom: 10 }}>
                     {/* Rating Bands - Exact Codeforces rating divisions */}
                     <defs>
                       {/* Individual rank background colors */}
@@ -262,7 +262,7 @@ function CodeforcesStatsCard() {
                       }).filter(Boolean);
                     })()}
 
-                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                    <CartesianGrid strokeDasharray="0 0" stroke="#666564" />
 
                     {/* Rating Thresholds */}
                     <ReferenceLine y={1200} stroke="#cccccc" strokeDasharray="2 2" strokeWidth={0.1} />
@@ -279,6 +279,7 @@ function CodeforcesStatsCard() {
                       axisLine={{ stroke: '#ddd' }}
                       tickLine={{ stroke: '#ddd' }}
                       domain={['dataMin - 50', 'dataMax + 50']}
+                      tickCount={5}
                       className="text-gray-600 dark:text-gray-300"
                     />
                     <Tooltip
@@ -299,7 +300,7 @@ function CodeforcesStatsCard() {
                     <Line
                       type="linear"
                       dataKey="rating"
-                      stroke="#1d4ed8"
+                      stroke="#000000"
                       strokeWidth={3}
                       dot={false}
                       activeDot={{ r: 6, stroke: '#1d4ed8', strokeWidth: 3, fill: '#ffffff' }}

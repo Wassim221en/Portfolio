@@ -5,9 +5,9 @@ import "./global.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <App />
     </ThemeProvider>
-  </StrictMode>,
+  
 );
