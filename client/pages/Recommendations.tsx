@@ -127,7 +127,7 @@ export default function Recommendations() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {recommendationsData.map((recommendation, index) => (
           <ScrollAnimation key={recommendation.id} direction="up" delay={0.1 * index}>
-            <Card className="h-full bg-white hover:shadow-xl transition-all duration-300 border-gray-200 hover:border-purple-200">
+            <Card className="h-full bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300 border-gray-200 dark:border-gray-700 hover:border-purple-200 dark:hover:border-purple-600">
               <CardContent className="p-8 h-full flex flex-col">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-6">
