@@ -360,7 +360,7 @@ export default function Index() {
 
                     <div className="flex-1">
                       <Quote className="w-6 h-6 text-purple-300 mb-3" />
-                      <blockquote className="text-gray-700 leading-relaxed italic text-sm line-clamp-4">
+                      <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed italic text-sm line-clamp-4">
                         "{recommendation.body}"
                       </blockquote>
                     </div>
