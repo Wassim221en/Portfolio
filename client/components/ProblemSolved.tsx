@@ -261,6 +261,8 @@ function CodeforcesStatsCard() {
                         );
                       }).filter(Boolean);
                     })()}
+
+
                     {/* Rating Thresholds */}
                     <ReferenceLine y={1200} stroke="#cccccc" strokeDasharray="2 2" strokeWidth={0.1} />
                     <ReferenceLine y={1400} stroke="#77ff77" strokeDasharray="2 2" strokeWidth={0.1} />
@@ -286,19 +288,20 @@ function CodeforcesStatsCard() {
                       tickLine={false}
                     />
                     <CartesianGrid strokeDasharray="3 3" stroke="#666564" />
-                    contentStyle={{
-                      backgroundColor: 'hsl(var(--background))',
-                      border: '1px solid hsl(var(--border))',
-                      borderRadius: '4px',
-                      fontSize: '12px',
-                      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                      color: 'hsl(var(--foreground))'
-                    }}
-                    formatter={(value: number) => [
-                      `${value} (${getRankColor(value).rank})`,
-                      'Rating'
-                    ]}
-                    labelFormatter={(label) => `Contest: ${label}`}
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: 'hsl(var(--background))',
+                        border: '1px solid hsl(var(--border))',
+                        borderRadius: '4px',
+                        fontSize: '12px',
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                        color: 'hsl(var(--foreground))'
+                      }}
+                      formatter={(value: number) => [
+                        `${value} (${getRankColor(value).rank})`,
+                        'Rating'
+                      ]}
+                      labelFormatter={(label) => `Contest: ${label}`}
                     />
                     <Line
                       type="linear"
