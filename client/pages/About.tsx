@@ -267,7 +267,7 @@ export default function About() {
           {/* Achivement Section */}
           <ScrollAnimation direction="left">
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Achievement</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Achievement</h3>
               <div className="space-y-6">
                 {achievement.map((edu, index) => (
                   <ScrollAnimation key={index} direction="left" delay={0.2 * index}>
