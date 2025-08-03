@@ -231,8 +231,8 @@ function CodeforcesStatsCard() {
 
                       // Define rating thresholds and colors
                       const thresholds = [
-                        { min: 0, max: 1199, color: '#B8B6B6', opacity: 0.4 },      // Newbie - Gray
-                        { min: 1200, max: 1399, color: '#4EEB1A', opacity: 0.5 },   // Pupil - Green
+                        { min: 0, max: 1199, color: '#E7EDE6', opacity: 0.5 },      // Newbie - Gray
+                        { min: 1200, max: 1399, color: '#69FF3B', opacity: 0.5 },   // Pupil - Green
                         { min: 1400, max: 1599, color: '#1AE4EB', opacity: 0.5 },   // Specialist - Cyan
                         { min: 1600, max: 1899, color: '#1919D4', opacity: 0.5 },   // Expert - Blue
                         { min: 1900, max: 2099, color: '#e9d5ff', opacity: 0.5 },   // CM - Purple
@@ -261,9 +261,6 @@ function CodeforcesStatsCard() {
                         );
                       }).filter(Boolean);
                     })()}
-
-                    <CartesianGrid strokeDasharray="0 0" stroke="#666564" />
-
                     {/* Rating Thresholds */}
                     <ReferenceLine y={1200} stroke="#cccccc" strokeDasharray="2 2" strokeWidth={0.1} />
                     <ReferenceLine y={1400} stroke="#77ff77" strokeDasharray="2 2" strokeWidth={0.1} />
@@ -279,23 +276,29 @@ function CodeforcesStatsCard() {
                       axisLine={{ stroke: '#ddd' }}
                       tickLine={{ stroke: '#ddd' }}
                       domain={['dataMin - 50', 'dataMax + 50']}
-                      tickCount={5}
                       className="text-gray-600 dark:text-gray-300"
                     />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: 'hsl(var(--background))',
-                        border: '1px solid hsl(var(--border))',
-                        borderRadius: '4px',
-                        fontSize: '12px',
-                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                        color: 'hsl(var(--foreground))'
-                      }}
-                      formatter={(value: number) => [
-                        `${value} (${getRankColor(value).rank})`,
-                        'Rating'
-                      ]}
-                      labelFormatter={(label) => `Contest: ${label}`}
+                    <XAxis
+                      dataKey="contest"
+                      tickCount={5}
+                      tick={{ fill: 'currentColor' }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#666564" />
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--background))',
+                      border: '1px solid hsl(var(--border))',
+                      borderRadius: '4px',
+                      fontSize: '12px',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                      color: 'hsl(var(--foreground))'
+                    }}
+                    formatter={(value: number) => [
+                      `${value} (${getRankColor(value).rank})`,
+                      'Rating'
+                    ]}
+                    labelFormatter={(label) => `Contest: ${label}`}
                     />
                     <Line
                       type="linear"
