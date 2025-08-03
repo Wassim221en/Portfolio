@@ -3,6 +3,7 @@ import { ResponsiveLayout } from "@/components/ResponsiveLayout";
 import Index from "@/pages/Index";
 import Projects from "@/pages/Projects";
 import About from "@/pages/About";
+import Recommendations from "@/pages/Recommendations";
 import Store from "@/pages/Store";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
