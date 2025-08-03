@@ -277,9 +277,9 @@ export default function About() {
                       rel="noopener noreferrer"
                       className="block"
                     >
-                      <div className="bg-white p-6 rounded-2xl border border-gray-200 hover:shadow-md transition-transform duration-300 hover:scale-105 cursor-pointer">
+                      <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-transform duration-300 hover:scale-105 cursor-pointer">
                         <div className="flex items-start space-x-4">
-                          <div className="bg-green-100 p-3 rounded-lg">
+                          <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
                            <img
                               src='images/icpc.png'
                               alt={`ICPC Logo`}
@@ -288,16 +288,16 @@ export default function About() {
                           </div>
                           <div className="flex-1">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                              <h4 className="font-semibold text-gray-900">
+                              <h4 className="font-semibold text-gray-900 dark:text-white">
                                 {edu.title}
                               </h4>
-                              <span className="text-sm text-gray-500 flex items-center">
+                              <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
                                 <Calendar className="w-4 h-4 mr-1" />
                                 {edu.period}
                               </span>
                             </div>
-                            <p className="text-purple-600 font-medium mb-2">{edu.school}</p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-purple-600 dark:text-purple-400 font-medium mb-2">{edu.school}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
                               {edu.description}
                             </p>
                           </div>
