@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PortfolioWork } from '@/components/PortfolioWork';
 import { Services } from '@/components/Services';
 import { ScrollAnimation } from '@/components/ScrollAnimation';
+import { recommendationsData } from '@/pages/Recommendations';
 
 export default function Index() {
   const [emailCopied, setEmailCopied] = useState(false);
