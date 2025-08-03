@@ -188,8 +188,8 @@ export default function Blog() {
       <ScrollAnimation direction="up" delay={0.2}>
         <section className="mb-20">
           <div className="flex items-center mb-8">
-            <BookOpen className="w-6 h-6 text-purple-600 mr-3" />
-            <h2 className="text-3xl font-bold text-gray-900">Featured Articles</h2>
+            <BookOpen className="w-6 h-6 text-purple-600 dark:text-purple-400 mr-3" />
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Articles</h2>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
