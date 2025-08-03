@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { SiCodeforces, SiWhatsapp} from 'react-icons/si';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/theme-toggle';
 import App from '@/App';
 
 const navigation = [
