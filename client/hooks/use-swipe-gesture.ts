@@ -16,7 +16,7 @@ export function useSwipeGesture({
   const startX = useRef<number>(0);
   const startY = useRef<number>(0);
   const isSwipingRef = useRef<boolean>(false);
-  const edgeThreshold = 30; // المنطقة من حافة الشاشة للبدء بالسحب
+  const edgeThreshold = 60; // المنطقة من حافة الشاشة للبدء بالسحب
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
