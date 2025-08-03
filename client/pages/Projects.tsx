@@ -187,7 +187,7 @@ export default function Projects() {
       <ScrollAnimation direction="up" delay={0.3}>
         <section>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 sm:mb-0">All Projects</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-0">All Projects</h2>
             
             {/* Filter Buttons */}
             <div className="flex items-center space-x-2 overflow-x-auto pb-2">
