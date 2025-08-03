@@ -238,6 +238,91 @@ export default function Index() {
 
       {/* Portfolio Work Section */}
       <PortfolioWork />
+
+      {/* Featured Blog Posts Section */}
+      <ScrollAnimation direction="up">
+        <section className="mb-16 lg:mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Latest Articles</h2>
+              <p className="text-gray-600">Insights and thoughts on development and design</p>
+            </div>
+            <Link to="/blog">
+              <Button variant="outline" className="flex items-center space-x-2">
+                <span>View All</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredBlogPosts.map((post, index) => (
+              <ScrollAnimation key={post.id} direction="up" delay={0.1 * index}>
+                <article className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <div className="aspect-video relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-purple-600 text-white text-sm font-medium rounded-full">
+                        {post.category}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
+                        {post.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
+
+                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                      <div className="flex items-center space-x-4">
+                        <span className="flex items-center">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {formatDate(post.date)}
+                        </span>
+                        <span className="flex items-center">
+                          <Clock className="w-4 h-4 mr-1" />
+                          {post.readTime}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        {post.tags.slice(0, 2).map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <Link to={`/blog/${post.id}`}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 p-2"
+                        >
+                          <ArrowRight className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </section>
+      </ScrollAnimation>
+
       {/* Service Section */}
       <Services/>
     </div>
