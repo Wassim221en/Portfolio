@@ -58,8 +58,8 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
               </div>
 
               <div className="text-right">
-                <h2 className="text-sm font-semibold text-gray-900">Wassim Alshami</h2>
-                <p className="text-xs text-gray-600">Back End Developer</p>
+                <h2 className="text-sm font-semibold text-gray-900 dark:text-white">Wassim Alshami</h2>
+                <p className="text-xs text-gray-600 dark:text-gray-300">Back End Developer</p>
               </div>
             </div>
           </div>
