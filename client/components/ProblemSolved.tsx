@@ -280,14 +280,7 @@ function CodeforcesStatsCard() {
                       domain={['dataMin - 50', 'dataMax + 50']}
                       className="text-gray-600 dark:text-gray-300"
                     />
-                    <XAxis
-                      dataKey="contest"
-                      tickCount={5}
-                      tick={{ fill: 'currentColor' }}
-                      axisLine={false}
-                      tickLine={false}
-                    />
-                    <CartesianGrid strokeDasharray="3 3" stroke="#666564" />
+                    <CartesianGrid vertical={true} strokeDasharray="0 0" stroke="#666564" />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: 'hsl(var(--background))',
