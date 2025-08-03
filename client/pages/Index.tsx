@@ -106,7 +106,7 @@ export default function Index() {
           </div>
         </div>
 
-        <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-3xl mb-6 lg:mb-8">
+        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mb-6 lg:mb-8">
           I am Wassim Alshami, a back-end developer with over a year of experience in ASP.NET. I specialize in designing high-performance software and solving complex technical challenges. Passionate about problem-solving, I’ve competed in the ICPC and local contests in Syria, also serving as a coach. With 1,800+ problems solved on Codeforces, I bring strong analytical skills to deliver efficient and innovative solutions.
         </p>
 
