@@ -244,14 +244,14 @@ export default function About() {
                           </div>
                           <div className="flex-1">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                              <h4 className="font-semibold text-gray-900">{exp.title}</h4>
-                              <span className="text-sm text-gray-500 flex items-center">
+                              <h4 className="font-semibold text-gray-900 dark:text-white">{exp.title}</h4>
+                              <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
                                 <Calendar className="w-4 h-4 mr-1" />
                                 {exp.period}
                               </span>
                             </div>
-                            <p className="text-purple-600 font-medium mb-2">{exp.company}</p>
-                            <p className="text-sm text-gray-600">{exp.description}</p>
+                            <p className="text-purple-600 dark:text-purple-400 font-medium mb-2">{exp.company}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">{exp.description}</p>
                           </div>
                         </div>
                       </div>
