@@ -119,7 +119,7 @@ export default function Projects() {
       {/* Featured Projects */}
       <ScrollAnimation direction="up" delay={0.2}>
         <section className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Projects</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Featured Projects</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
               <ScrollAnimation key={project.id} direction="up" delay={0.1 * index}>
