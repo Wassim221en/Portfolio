@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Sidebar } from "./Sidebar";
 import { PageTransition } from "./PageTransition";
+import { useSwipeGesture } from "@/hooks/use-swipe-gesture";
 
 interface ResponsiveLayoutProps {
   children: React.ReactNode;
