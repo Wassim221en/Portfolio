@@ -346,13 +346,13 @@ export default function Index() {
                         {recommendation.user.charAt(0)}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-gray-900 text-lg">
+                        <h4 className="font-semibold text-gray-900 dark:text-white text-lg">
                           {recommendation.user}
                         </h4>
-                        <p className="text-purple-600 text-sm font-medium">
+                        <p className="text-purple-600 dark:text-purple-400 text-sm font-medium">
                           {recommendation.position}
                         </p>
-                        <p className="text-gray-500 text-xs">
+                        <p className="text-gray-500 dark:text-gray-400 text-xs">
                           {recommendation.company}
                         </p>
                       </div>
