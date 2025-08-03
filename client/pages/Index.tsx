@@ -157,6 +157,85 @@ export default function Index() {
         </div>
       </div>
 
+      {/* Featured Projects Section */}
+      <ScrollAnimation direction="up">
+        <section className="mb-16 lg:mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Featured Projects</h2>
+              <p className="text-gray-600">Some of my recent work that I'm proud of</p>
+            </div>
+            <Link to="/projects">
+              <Button variant="outline" className="flex items-center space-x-2">
+                <span>View All</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredProjects.map((project, index) => (
+              <ScrollAnimation key={project.id} direction="up" delay={0.1 * index}>
+                <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <div className="aspect-video relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute top-4 left-4">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        project.status === 'Live'
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-yellow-100 text-yellow-700'
+                      }`}>
+                        {project.status}
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4 flex space-x-2">
+                      <a
+                        href={project.liveUrl}
+                        className="p-2 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={project.githubUrl}
+                        className="p-2 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300 delay-75"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm text-purple-600 font-medium">{project.category}</span>
+                      <span className="text-sm text-gray-500 flex items-center">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {project.year}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </section>
+      </ScrollAnimation>
+
       {/* Portfolio Work Section */}
       <PortfolioWork />
       {/* Service Section */}
