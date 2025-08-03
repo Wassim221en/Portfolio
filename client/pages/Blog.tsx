@@ -239,7 +239,7 @@ export default function Blog() {
                         {post.tags.slice(0, 2).map((tag, tagIndex) => (
                           <span 
                             key={tagIndex}
-                            className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
                           >
                             {tag}
                           </span>
