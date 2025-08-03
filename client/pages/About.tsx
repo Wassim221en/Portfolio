@@ -223,7 +223,7 @@ export default function About() {
           {/* Experience Section */}
           <ScrollAnimation direction="right">
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Experience</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Experience</h3>
               <div className="space-y-6">
                 {experience.map((exp, index) => (
                   <ScrollAnimation key={index} direction="right" delay={0.2 * index}>
