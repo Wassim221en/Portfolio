@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   ReferenceLine,
+  ReferenceArea,
 } from 'recharts';
 import { ScrollAnimation } from "./ScrollAnimation";
 
@@ -41,7 +42,7 @@ function CodeforcesStatsCard() {
       try {
         setLoading(true);
         setError(false);
-        
+
         const [statusRes, ratingRes] = await Promise.all([
           fetch('https://codeforces.com/api/user.status?handle=Wassim221e'),
           fetch('https://codeforces.com/api/user.rating?handle=Wassim221e'),
@@ -130,9 +131,9 @@ function CodeforcesStatsCard() {
 
   return (
     <ScrollAnimation>
-        <div className="w-full max-w-6xl mx-auto mb-4">
-      <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4 px-4">Codeforces Statistics</h1>
-    </div>
+      <div className="w-full max-w-6xl mx-auto mb-4">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4 px-4">Codeforces Statistics</h1>
+      </div>
       <div className="w-full max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
         {/* Header */}
         <div className={`${bgColor} px-8 py-6 border-b border-gray-100 dark:border-gray-700`}>
@@ -141,7 +142,7 @@ function CodeforcesStatsCard() {
               W
             </div>
             <div>
-             <h2 className={`text-2xl font-bold ${color} flex items-center gap-2`}>
+              <h2 className={`text-2xl font-bold ${color} flex items-center gap-2`}>
                 Wassim22e
                 <span className="text-lg">🧑‍💻</span>
               </h2>
@@ -242,22 +243,18 @@ function CodeforcesStatsCard() {
                       ];
 
                       return thresholds.map((band, index) => {
-                        // Only show bands that intersect with our rating range
+                        // Skip bands outside the chart's Y domain
                         if (band.max < minRating || band.min > maxRating) return null;
 
-                        const yStart = Math.max(0, ratingToY(Math.min(band.max, maxRating)));
-                        const yEnd = Math.min(400, ratingToY(Math.max(band.min, minRating)));
-                        const height = yEnd - yStart;
-
-                        if (height <= 0) return null;
+                        const y1 = Math.max(band.min, minRating);
+                        const y2 = Math.min(band.max, maxRating);
 
                         return (
-                          <rect
+                          <ReferenceArea
                             key={index}
-                            x={0}
-                            y={yStart + 20} // Offset for chart margins
-                            width="100%"
-                            height={height}
+                            y1={y1}
+                            y2={y2}
+                            strokeOpacity={0}
                             fill={band.color}
                             fillOpacity={band.opacity}
                           />
