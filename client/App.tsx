@@ -20,7 +20,7 @@ function usePageViews() {
     ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
   }, [location]);
 }
-const TRACKING_ID = "G-XXXXXXXXXX";
+const TRACKING_ID = "G-T8FRHQZ9BH";
 ReactGA.initialize(TRACKING_ID);
 function App() {
   usePageViews();
