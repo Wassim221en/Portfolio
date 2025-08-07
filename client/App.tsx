@@ -13,9 +13,7 @@ import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 import ReactGA from "react-ga4";
 const TRACKING_ID = "G-T8FRHQZ9BH";
-ReactGA.initialize(TRACKING_ID);
 function App() {
-  ReactGA.send("pageview");
   return (
     <BrowserRouter>
       <ResponsiveLayout>

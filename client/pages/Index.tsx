@@ -20,32 +20,8 @@ import { PortfolioWork } from "@/components/PortfolioWork";
 import { Services } from "@/components/Services";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { recommendationsData } from "@/pages/Recommendations";
-declare global {
-  interface Window {
-    dataLayer: any[];
-    gtag?: (...args: any[]) => void;
-  }
-}
+
 export default function Index() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-T8FRHQZ9BH";
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function (...args: any[]) {
-      window.dataLayer.push(args);
-    };
-
-    window.gtag('js', new Date());
-    window.gtag('config', 'G-T8FRHQZ9BH');
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
-
   const [emailCopied, setEmailCopied] = useState(false);
 
   // Featured projects data
@@ -129,6 +105,22 @@ export default function Index() {
       console.error("Failed to copy email");
     }
   };
+  useEffect(() => {
+    const sendVisitInfo = async () => {
+      try {
+        await fetch("https://localhost:7001/api/Statics/AddVisitor", {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+          },
+        });
+      } catch (error) {
+        console.error("Error sending statics info:", error);
+      }
+    };
+
+    sendVisitInfo();
+  }, []);
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
@@ -236,8 +228,8 @@ export default function Index() {
                     <div className="absolute top-4 left-4">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === "Live"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-yellow-100 text-yellow-700"
+                            ? "bg-green-100 text-green-700"
+                            : "bg-yellow-100 text-yellow-700"
                           }`}
                       >
                         {project.status}
