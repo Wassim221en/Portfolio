@@ -12,18 +12,10 @@ import { useLocation } from "react-router-dom";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 import ReactGA from "react-ga4";
-
-function usePageViews() {
-  const location = useLocation();
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
-  }, [location]);
-}
 const TRACKING_ID = "G-T8FRHQZ9BH";
 ReactGA.initialize(TRACKING_ID);
 function App() {
-  usePageViews();
+  ReactGA.send("pageview");
   return (
     <BrowserRouter>
       <ResponsiveLayout>
