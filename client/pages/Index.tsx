@@ -11,6 +11,7 @@ import {
   BookOpen,
   Quote,
 } from "lucide-react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -19,8 +20,32 @@ import { PortfolioWork } from "@/components/PortfolioWork";
 import { Services } from "@/components/Services";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { recommendationsData } from "@/pages/Recommendations";
-
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag?: (...args: any[]) => void;
+  }
+}
 export default function Index() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-T8FRHQZ9BH";
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function (...args: any[]) {
+      window.dataLayer.push(args);
+    };
+
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-T8FRHQZ9BH');
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   const [emailCopied, setEmailCopied] = useState(false);
 
   // Featured projects data
@@ -210,11 +235,10 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-4 left-4">
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          project.status === "Live"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-yellow-100 text-yellow-700"
-                        }`}
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === "Live"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-yellow-100 text-yellow-700"
+                          }`}
                       >
                         {project.status}
                       </span>
