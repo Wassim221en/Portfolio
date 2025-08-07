@@ -7,10 +7,23 @@ import Recommendations from "@/pages/Recommendations";
 import Store from "@/pages/Store";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
+import ReactGA from "react-ga4";
 
+function usePageViews() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
+  }, [location]);
+}
+const TRACKING_ID = "G-XXXXXXXXXX";
+ReactGA.initialize(TRACKING_ID);
 function App() {
+  usePageViews();
   return (
     <BrowserRouter>
       <ResponsiveLayout>
