@@ -5,6 +5,7 @@ import Projects from "@/pages/Projects";
 import About from "@/pages/About";
 import Recommendations from "@/pages/Recommendations";
 import Store from "@/pages/Store";
+import React from 'react';
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import { useEffect } from "react";
@@ -13,9 +14,42 @@ import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 import ReactGA from "react-ga4";
 const TRACKING_ID = "G-T8FRHQZ9BH";
+export {};
+
+declare global {
+  interface Window {
+    _mtm?: any[];
+  }
+}
+function MatomoTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // تحميل سكريبت ماتومو مرة واحدة
+    if (!window._mtm) {
+      window._mtm = window._mtm || [];
+      window._mtm.push({ 'mtm.startTime': new Date().getTime(), event: 'mtm.Start' });
+      const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+      g.async = true;
+      g.src = 'https://cdn.matomo.cloud/portfolioanaly.matomo.cloud/container_937Vg3H6.js';
+      s.parentNode.insertBefore(g, s);
+    }
+  }, []);
+
+  useEffect(() => {
+    // إرسال حدث pageview عند تغيير الموقع
+    if (window._mtm) {
+      window._mtm.push({ event: 'pageview', href: window.location.href });
+    }
+  }, [location]);
+
+  return null; // لا يعرض شيء
+}
 function App() {
+  
   return (
     <BrowserRouter>
+     <MatomoTracker />
       <ResponsiveLayout>
         <Routes>
           <Route path="Portfolio/" element={<Index />} />
