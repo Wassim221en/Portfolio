@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import EditorJS from '@editorjs/editorjs';
 
-// Import Editor.js tools
-import Header from '@editorjs/header';
-import List from '@editorjs/list';
-import Quote from '@editorjs/quote';
-import Delimiter from '@editorjs/delimiter';
-import Table from '@editorjs/table';
-import Warning from '@editorjs/warning';
-import Code from '@editorjs/code';
-import Embed from '@editorjs/embed';
-import LinkTool from '@editorjs/link';
-import Image from '@editorjs/image';
-import Marker from '@editorjs/marker';
-import InlineCode from '@editorjs/inline-code';
+// Import Editor.js tools - with dynamic imports for better compatibility
+import('@editorjs/header');
+import('@editorjs/list');
+import('@editorjs/quote');
+import('@editorjs/delimiter');
+import('@editorjs/table');
+import('@editorjs/warning');
+import('@editorjs/code');
+import('@editorjs/embed');
+import('@editorjs/link');
+import('@editorjs/image');
+import('@editorjs/marker');
+import('@editorjs/inline-code');
 
 interface EditorJsEditorProps {
   data?: any;
@@ -76,7 +76,7 @@ const EditorJsEditor: React.FC<EditorJsEditorProps> = ({
           class: Quote,
           inlineToolbar: true,
           config: {
-            quotePlaceholder: 'اك��ب اقتباس...',
+            quotePlaceholder: 'اكتب اقتباس...',
             captionPlaceholder: 'مصدر الاقتباس'
           }
         },
