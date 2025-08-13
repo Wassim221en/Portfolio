@@ -184,13 +184,24 @@ export default function Blog() {
       {/* Header */}
       <ScrollAnimation direction="up">
         <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Design Blog
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-            Insights, tips, and thoughts on product design, user experience, and
-            the evolving world of digital creation.
-          </p>
+          <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
+            <div className="flex-1">
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                مدونة التقنية
+              </h1>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                أفكار ونصائح حول تطوير البرمجيات، تجربة المستخدم، والعالم المتطور للإبداع الرقمي.
+              </p>
+            </div>
+            <div className="mt-6 lg:mt-0">
+              <Link to="/Portfolio/blog/create">
+                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl">
+                  <PenTool className="w-5 h-5 mr-2" />
+                  إنشاء مقال جديد
+                </Button>
+              </Link>
+            </div>
+          </div>
 
           {/* Search Bar */}
           <div className="max-w-md mx-auto relative">
