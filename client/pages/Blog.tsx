@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Calendar,
@@ -8,141 +8,30 @@ import {
   Tag,
   User,
   BookOpen,
+  Loader2,
 } from "lucide-react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 
-const categories = [
-  "All",
-  "Design",
-  "UX Research",
-  "Product",
-  "Development",
-  "Tips",
-];
+// Blog post interface based on the API response
+interface BlogPost {
+  id: string;
+  title: string;
+  shortDescription: string;
+  tages: string[]; // Note: API has "tages" not "tags"
+  dateCreated: string;
+  coverImageUrl: string;
+}
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Future of Design Systems: Building for Scale",
-    excerpt:
-      "How modern design systems are evolving to meet the needs of growing organizations and complex products.",
-    content:
-      "Design systems have become the backbone of modern product development...",
-    category: "Design",
-    author: "Patryk Ilnicki",
-    date: "2024-03-15",
-    readTime: "8 min read",
-    image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
-    tags: ["Design Systems", "Scalability", "Product Design"],
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "User Research in the Age of AI: What's Changing?",
-    excerpt:
-      "Exploring how artificial intelligence is transforming user research methods and what designers need to know.",
-    content:
-      "As AI continues to reshape industries, user research is not immune to change...",
-    category: "UX Research",
-    author: "Patryk Ilnicki",
-    date: "2024-03-12",
-    readTime: "6 min read",
-    image: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
-    tags: ["AI", "User Research", "Innovation"],
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "10 Essential Figma Plugins Every Designer Should Know",
-    excerpt:
-      "Boost your productivity with these must-have Figma plugins that will transform your design workflow.",
-    content:
-      "Figma has revolutionized the design industry with its collaborative features...",
-    category: "Tips",
-    author: "Patryk Ilnicki",
-    date: "2024-03-10",
-    readTime: "5 min read",
-    image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg",
-    tags: ["Figma", "Productivity", "Design Tools"],
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "From Concept to Launch: A Product Design Case Study",
-    excerpt:
-      "A detailed walkthrough of designing a SaaS product from initial research to final implementation.",
-    content:
-      "Product design is a journey that involves multiple stakeholders...",
-    category: "Product",
-    author: "Patryk Ilnicki",
-    date: "2024-03-08",
-    readTime: "12 min read",
-    image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg",
-    tags: ["Case Study", "SaaS", "Product Design"],
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "The Psychology of Color in Digital Interfaces",
-    excerpt:
-      "Understanding how color choices impact user behavior and decision-making in digital products.",
-    content:
-      "Color is one of the most powerful tools in a designer's arsenal...",
-    category: "Design",
-    author: "Patryk Ilnicki",
-    date: "2024-03-05",
-    readTime: "7 min read",
-    image: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg",
-    tags: ["Color Theory", "Psychology", "UI Design"],
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Building Accessible Interfaces: A Practical Guide",
-    excerpt:
-      "Essential principles and practical tips for creating inclusive digital experiences for all users.",
-    content:
-      "Accessibility in design is not just about compliance; it's about creating...",
-    category: "UX Research",
-    author: "Patryk Ilnicki",
-    date: "2024-03-02",
-    readTime: "10 min read",
-    image: "https://images.pexels.com/photos/3584994/pexels-photo-3584994.jpeg",
-    tags: ["Accessibility", "Inclusive Design", "UX"],
-    featured: false,
-  },
-  {
-    id: 7,
-    title: "Rapid Prototyping Techniques for Modern Designers",
-    excerpt:
-      "Speed up your design process with these effective prototyping methods and tools.",
-    content:
-      "In today's fast-paced development environment, rapid prototyping has become...",
-    category: "Development",
-    author: "Patryk Ilnicki",
-    date: "2024-02-28",
-    readTime: "6 min read",
-    image: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
-    tags: ["Prototyping", "Design Process", "Productivity"],
-    featured: false,
-  },
-  {
-    id: 8,
-    title: "The Rise of Voice UI: Designing for Conversational Interfaces",
-    excerpt:
-      "How voice interfaces are changing user interaction and what designers need to consider.",
-    content:
-      "Voice user interfaces represent a fundamental shift in how we interact...",
-    category: "Product",
-    author: "Patryk Ilnicki",
-    date: "2024-02-25",
-    readTime: "9 min read",
-    image: "https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg",
-    tags: ["Voice UI", "Conversational Design", "Future Tech"],
-    featured: false,
-  },
-];
+// Extended interface for display purposes
+interface DisplayBlogPost extends BlogPost {
+  category?: string;
+  author?: string;
+  readTime?: string;
+  featured?: boolean;
+}
+
+const categories = ["All", "Tech", "CSharp", "EFCore", "Programming", "ASP.NET", "Tutorial"];
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
