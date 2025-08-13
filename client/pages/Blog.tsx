@@ -32,7 +32,6 @@ interface DisplayBlogPost extends BlogPost {
 }
 
 const categories = ["All", "Tech", "CSharp", "EFCore", "Programming", "ASP.NET", "Tutorial"];
-const blogs = useState([]);
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
