@@ -1,13 +1,21 @@
-import React, { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Save, Eye, Upload, Tag, FileText, Calendar } from 'lucide-react';
-import { ScrollAnimation } from '@/components/ScrollAnimation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import SimpleEditorJs from '@/components/SimpleEditorJs';
-import EditorJsViewer from '@/components/EditorJsViewer';
+import React, { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  ArrowLeft,
+  Save,
+  Eye,
+  Upload,
+  Tag,
+  FileText,
+  Calendar,
+} from "lucide-react";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import SimpleEditorJs from "@/components/SimpleEditorJs";
+import EditorJsViewer from "@/components/EditorJsViewer";
 
 interface BlogPostData {
   title: string;
@@ -21,73 +29,73 @@ interface BlogPostData {
 export default function CreateBlog() {
   const navigate = useNavigate();
   const editorRef = useRef<any>(null);
-  
+
   const [formData, setFormData] = useState<BlogPostData>({
-    title: '',
-    slug: '',
-    shortDescription: '',
+    title: "",
+    slug: "",
+    shortDescription: "",
     tags: [],
-    coverImageUrl: '',
-    contentJson: ''
+    coverImageUrl: "",
+    contentJson: "",
   });
-  
-  const [tagInput, setTagInput] = useState('');
+
+  const [tagInput, setTagInput] = useState("");
   const [editorData, setEditorData] = useState<any>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [loading, setSaving] = useState(false);
 
   const handleInputChange = (field: keyof BlogPostData, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [field]: value,
-      ...(field === 'title' && { slug: generateSlug(value) })
+      ...(field === "title" && { slug: generateSlug(value) }),
     }));
   };
 
   const generateSlug = (title: string) => {
     return title
       .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
       .trim();
   };
 
   const handleAddTag = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && tagInput.trim()) {
+    if (e.key === "Enter" && tagInput.trim()) {
       e.preventDefault();
       const newTag = tagInput.trim();
       if (!formData.tags.includes(newTag)) {
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
-          tags: [...prev.tags, newTag]
+          tags: [...prev.tags, newTag],
         }));
       }
-      setTagInput('');
+      setTagInput("");
     }
   };
 
   const removeTag = (tagToRemove: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      tags: prev.tags.filter(tag => tag !== tagToRemove)
+      tags: prev.tags.filter((tag) => tag !== tagToRemove),
     }));
   };
 
   const handleEditorChange = (data: any) => {
     setEditorData(data);
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      contentJson: JSON.stringify(data)
+      contentJson: JSON.stringify(data),
     }));
   };
 
   const handleSave = async () => {
     try {
       setSaving(true);
-      
+
       // Validate required fields
       if (!formData.title || !formData.shortDescription || !editorData) {
-        alert('يرجى ملء جميع الحقول المطلوبة');
+        alert("يرجى ملء جميع الحقول المطلوبة");
         return;
       }
 
@@ -102,29 +110,29 @@ export default function CreateBlog() {
       const blogPostData = {
         ...formData,
         tages: formData.tags, // API expects 'tages' not 'tags'
-        dateCreated: new Date().toISOString()
+        dateCreated: new Date().toISOString(),
       };
 
       // Call your API to save the blog post
-      const response = await fetch('https://localhost:7001/api/Blog', {
-        method: 'POST',
+      const response = await fetch("https://localhost:7001/api/Blog", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'accept': '*/*'
+          "Content-Type": "application/json",
+          accept: "*/*",
         },
-        body: JSON.stringify(blogPostData)
+        body: JSON.stringify(blogPostData),
       });
 
       if (response.ok) {
         const savedPost = await response.json();
-        alert('تم حفظ المقال بنجاح!');
+        alert("تم حفظ المقال بنجاح!");
         navigate(`/blog/${savedPost.id}`);
       } else {
-        throw new Error('فشل في حفظ المقال');
+        throw new Error("فشل في حفظ المقال");
       }
     } catch (error) {
-      console.error('Error saving blog post:', error);
-      alert('حدث خطأ أثناء حفظ المقال');
+      console.error("Error saving blog post:", error);
+      alert("حدث خطأ أثناء حفظ المقال");
     } finally {
       setSaving(false);
     }
@@ -140,7 +148,7 @@ export default function CreateBlog() {
       <ScrollAnimation direction="up">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
-            <Link 
+            <Link
               to="/blog"
               className="inline-flex items-center text-purple-600 hover:text-purple-700 mr-6 transition-colors"
             >
@@ -151,7 +159,7 @@ export default function CreateBlog() {
               إنشاء مقال جديد
             </h1>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <Button
               variant="outline"
@@ -159,7 +167,7 @@ export default function CreateBlog() {
               className="flex items-center"
             >
               <Eye className="w-4 h-4 mr-2" />
-              {showPreview ? 'تعديل' : 'معاينة'}
+              {showPreview ? "تعديل" : "معاينة"}
             </Button>
             <Button
               onClick={handleSave}
@@ -167,7 +175,7 @@ export default function CreateBlog() {
               className="bg-purple-600 hover:bg-purple-700 flex items-center"
             >
               <Save className="w-4 h-4 mr-2" />
-              {loading ? 'جاري الحفظ...' : 'حفظ المقال'}
+              {loading ? "جاري الحفظ..." : "حفظ المقال"}
             </Button>
           </div>
         </div>
@@ -183,30 +191,30 @@ export default function CreateBlog() {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   معاينة المقال
                 </h2>
-                
+
                 {/* Preview Header */}
                 <div className="mb-8">
                   <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                    {formData.title || 'عنوان المقال'}
+                    {formData.title || "عنوان المقال"}
                   </h1>
                   <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                    {formData.shortDescription || 'وصف المقال'}
+                    {formData.shortDescription || "وصف المقال"}
                   </p>
-                  
+
                   {formData.coverImageUrl && (
                     <div className="aspect-video rounded-lg overflow-hidden mb-4">
-                      <img 
-                        src={formData.coverImageUrl} 
+                      <img
+                        src={formData.coverImageUrl}
                         alt={formData.title}
                         className="w-full h-full object-cover"
                       />
                     </div>
                   )}
-                  
+
                   {formData.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {formData.tags.map((tag, index) => (
-                        <span 
+                        <span
                           key={index}
                           className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm rounded-full"
                         >
@@ -216,7 +224,7 @@ export default function CreateBlog() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* Preview Content */}
                 {editorData && <EditorJsViewer data={editorData} />}
               </div>
@@ -228,49 +236,57 @@ export default function CreateBlog() {
                     <FileText className="w-5 h-5 mr-2" />
                     معلومات المقال
                   </h2>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="title">عنوان المقال *</Label>
                       <Input
                         id="title"
                         value={formData.title}
-                        onChange={(e) => handleInputChange('title', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("title", e.target.value)
+                        }
                         placeholder="اكتب عنوان المقال"
                         className="mt-1"
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="slug">الرابط</Label>
                       <Input
                         id="slug"
                         value={formData.slug}
-                        onChange={(e) => handleInputChange('slug', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("slug", e.target.value)
+                        }
                         placeholder="blog-post-url"
                         className="mt-1"
                       />
                     </div>
                   </div>
-                  
+
                   <div className="mt-4">
                     <Label htmlFor="description">وصف مختصر *</Label>
                     <Textarea
                       id="description"
                       value={formData.shortDescription}
-                      onChange={(e) => handleInputChange('shortDescription', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("shortDescription", e.target.value)
+                      }
                       placeholder="اكتب وصفاً مختصراً للمقال"
                       className="mt-1"
                       rows={3}
                     />
                   </div>
-                  
+
                   <div className="mt-4">
                     <Label htmlFor="coverImage">صورة الغلاف</Label>
                     <Input
                       id="coverImage"
                       value={formData.coverImageUrl}
-                      onChange={(e) => handleInputChange('coverImageUrl', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("coverImageUrl", e.target.value)
+                      }
                       placeholder="رابط صورة الغلاف"
                       className="mt-1"
                     />
@@ -301,7 +317,7 @@ export default function CreateBlog() {
                 <Tag className="w-5 h-5 mr-2" />
                 التصنيفات والكلمات المفتاحية
               </h3>
-              
+
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="tags">إضافة تصنيف</Label>
@@ -317,13 +333,13 @@ export default function CreateBlog() {
                     اضغط Enter لإضافة التصنيف
                   </p>
                 </div>
-                
+
                 {formData.tags.length > 0 && (
                   <div>
                     <Label>التصنيفات المضافة</Label>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {formData.tags.map((tag, index) => (
-                        <span 
+                        <span
                           key={index}
                           className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm rounded-full flex items-center cursor-pointer hover:bg-purple-200 dark:hover:bg-purple-900/50"
                           onClick={() => removeTag(tag)}
@@ -336,14 +352,14 @@ export default function CreateBlog() {
                   </div>
                 )}
               </div>
-              
+
               <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <h4 className="font-medium text-gray-900 dark:text-white mb-2 flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
                   معلومات النشر
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  تاريخ الإنشاء: {new Date().toLocaleDateString('ar-SA')}
+                  تاريخ الإنشاء: {new Date().toLocaleDateString("ar-SA")}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   المؤلف: Wassim

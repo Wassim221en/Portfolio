@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import EditorJS from '@editorjs/editorjs';
+import React, { useEffect, useRef } from "react";
+import EditorJS from "@editorjs/editorjs";
 
 interface SimpleEditorJsProps {
   data?: any;
@@ -12,7 +12,7 @@ const SimpleEditorJs: React.FC<SimpleEditorJsProps> = ({
   data,
   onChange,
   placeholder = "اكتب مقالك هنا...",
-  readOnly = false
+  readOnly = false,
 }) => {
   const editorRef = useRef<EditorJS | null>(null);
   const holderRef = useRef<HTMLDivElement>(null);
@@ -30,52 +30,52 @@ const SimpleEditorJs: React.FC<SimpleEditorJsProps> = ({
           {
             type: "paragraph",
             data: {
-              text: "ابدأ بكتابة مقالك هنا..."
-            }
-          }
-        ]
+              text: "ابدأ بكتابة مقالك هنا...",
+            },
+          },
+        ],
       },
       tools: {
         // Basic tools that come with Editor.js
         header: {
-          class: require('@editorjs/header'),
+          class: require("@editorjs/header"),
           config: {
-            placeholder: 'اكتب عنوان...',
+            placeholder: "اكتب عنوان...",
             levels: [1, 2, 3, 4, 5, 6],
-            defaultLevel: 2
-          }
+            defaultLevel: 2,
+          },
         },
         list: {
-          class: require('@editorjs/list'),
-          inlineToolbar: true
+          class: require("@editorjs/list"),
+          inlineToolbar: true,
         },
         quote: {
-          class: require('@editorjs/quote'),
+          class: require("@editorjs/quote"),
           inlineToolbar: true,
           config: {
-            quotePlaceholder: 'اكتب اقتباس...',
-            captionPlaceholder: 'مصدر الاقتباس'
-          }
+            quotePlaceholder: "اكتب اقتباس...",
+            captionPlaceholder: "مصدر الاقتباس",
+          },
         },
-        delimiter: require('@editorjs/delimiter'),
+        delimiter: require("@editorjs/delimiter"),
         warning: {
-          class: require('@editorjs/warning'),
+          class: require("@editorjs/warning"),
           inlineToolbar: true,
           config: {
-            titlePlaceholder: 'عنوان التحذير',
-            messagePlaceholder: 'رسالة التحذير'
-          }
+            titlePlaceholder: "عنوان التحذير",
+            messagePlaceholder: "رسالة التحذير",
+          },
         },
         code: {
-          class: require('@editorjs/code'),
+          class: require("@editorjs/code"),
           config: {
-            placeholder: 'اكتب الكود هنا...'
-          }
+            placeholder: "اكتب الكود هنا...",
+          },
         },
         table: {
-          class: require('@editorjs/table'),
-          inlineToolbar: true
-        }
+          class: require("@editorjs/table"),
+          inlineToolbar: true,
+        },
       },
       onChange: async () => {
         if (onChange && editor) {
@@ -83,10 +83,10 @@ const SimpleEditorJs: React.FC<SimpleEditorJsProps> = ({
             const outputData = await editor.save();
             onChange(outputData);
           } catch (error) {
-            console.error('Error saving editor data:', error);
+            console.error("Error saving editor data:", error);
           }
         }
-      }
+      },
     });
 
     editorRef.current = editor;
@@ -105,11 +105,11 @@ const SimpleEditorJs: React.FC<SimpleEditorJsProps> = ({
         const outputData = await editorRef.current.save();
         return outputData;
       } catch (error) {
-        console.error('Saving failed:', error);
+        console.error("Saving failed:", error);
         throw error;
       }
     }
-    throw new Error('Editor not initialized');
+    throw new Error("Editor not initialized");
   };
 
   const clear = () => {
@@ -121,7 +121,7 @@ const SimpleEditorJs: React.FC<SimpleEditorJsProps> = ({
   // Expose save and clear methods
   React.useImperativeHandle(editorRef, () => ({
     save,
-    clear
+    clear,
   }));
 
   return (

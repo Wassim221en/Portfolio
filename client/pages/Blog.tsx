@@ -55,15 +55,12 @@ export default function Blog() {
     const fetchBlogPosts = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          `https://localhost:7001/api/Blog/GetAll`,
-          {
-            headers: {
-              'accept': '*/*',
-              'ngrok-skip-browser-warning': 'true'
-            }
-          }
-        );
+        const response = await fetch(`https://localhost:7001/api/Blog/GetAll`, {
+          headers: {
+            accept: "*/*",
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -190,7 +187,8 @@ export default function Blog() {
                 مدونة التقنية
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                أفكار ونصائح حول تطوير البرمجيات، تجربة المستخدم، والعالم المتطور للإبداع الرقمي.
+                أفكار ونصائح حول تطوير البرمجيات، تجربة المستخدم، والعالم
+                المتطور للإبداع الرقمي.
               </p>
             </div>
             <div className="mt-6 lg:mt-0">

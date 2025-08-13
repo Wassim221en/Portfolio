@@ -5,7 +5,7 @@ import Projects from "@/pages/Projects";
 import About from "@/pages/About";
 import Recommendations from "@/pages/Recommendations";
 import Store from "@/pages/Store";
-import React from 'react';
+import React from "react";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import CreateBlog from "@/pages/CreateBlog";
@@ -25,20 +25,18 @@ declare global {
 function MatomoTracker() {
   const location = useLocation();
 
-
   useEffect(() => {
     if (window._mtm) {
-      window._mtm.push({ event: 'pageview', href: window.location.href });
+      window._mtm.push({ event: "pageview", href: window.location.href });
     }
   }, [location]);
 
   return null; // لا يعرض شيء
 }
 function App() {
-  
   return (
     <BrowserRouter>
-     <MatomoTracker />
+      <MatomoTracker />
       <ResponsiveLayout>
         <Routes>
           <Route path="Portfolio/" element={<Index />} />

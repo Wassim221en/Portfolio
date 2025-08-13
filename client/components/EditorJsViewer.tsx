@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface EditorJsBlock {
   id?: string;
@@ -21,45 +21,53 @@ const EditorJsViewer: React.FC<EditorJsViewerProps> = ({ data }) => {
     const { type, data: blockData } = block;
 
     switch (type) {
-      case 'header':
+      case "header":
         const HeadingTag = `h${blockData.level}` as keyof JSX.IntrinsicElements;
         return (
-          <HeadingTag 
-            key={index} 
+          <HeadingTag
+            key={index}
             className={`font-bold mb-4 mt-6 text-gray-900 dark:text-white ${
-              blockData.level === 1 ? 'text-3xl' :
-              blockData.level === 2 ? 'text-2xl' :
-              blockData.level === 3 ? 'text-xl' :
-              blockData.level === 4 ? 'text-lg' :
-              'text-base'
+              blockData.level === 1
+                ? "text-3xl"
+                : blockData.level === 2
+                  ? "text-2xl"
+                  : blockData.level === 3
+                    ? "text-xl"
+                    : blockData.level === 4
+                      ? "text-lg"
+                      : "text-base"
             }`}
           >
             {blockData.text}
           </HeadingTag>
         );
 
-      case 'paragraph':
+      case "paragraph":
         return (
-          <p 
-            key={index} 
+          <p
+            key={index}
             className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
             dangerouslySetInnerHTML={{ __html: blockData.text }}
           />
         );
 
-      case 'image':
+      case "image":
         return (
           <figure key={index} className="my-8">
             <div className="rounded-lg overflow-hidden">
               <img
                 src={blockData.file?.url || blockData.url}
-                alt={blockData.caption || ''}
+                alt={blockData.caption || ""}
                 className={`w-full h-auto ${
-                  blockData.stretched ? 'max-w-none' : 'max-w-full'
+                  blockData.stretched ? "max-w-none" : "max-w-full"
                 } ${
-                  blockData.withBorder ? 'border border-gray-300 dark:border-gray-600' : ''
+                  blockData.withBorder
+                    ? "border border-gray-300 dark:border-gray-600"
+                    : ""
                 } ${
-                  blockData.withBackground ? 'bg-gray-100 dark:bg-gray-800 p-4' : ''
+                  blockData.withBackground
+                    ? "bg-gray-100 dark:bg-gray-800 p-4"
+                    : ""
                 }`}
               />
             </div>
@@ -71,27 +79,33 @@ const EditorJsViewer: React.FC<EditorJsViewerProps> = ({ data }) => {
           </figure>
         );
 
-      case 'list':
-        const ListTag = blockData.style === 'ordered' ? 'ol' : 'ul';
+      case "list":
+        const ListTag = blockData.style === "ordered" ? "ol" : "ul";
         return (
-          <ListTag 
-            key={index} 
+          <ListTag
+            key={index}
             className={`mb-4 text-gray-700 dark:text-gray-300 ${
-              blockData.style === 'ordered' ? 'list-decimal list-inside' : 'list-disc list-inside'
+              blockData.style === "ordered"
+                ? "list-decimal list-inside"
+                : "list-disc list-inside"
             }`}
           >
             {blockData.items?.map((item: string, itemIndex: number) => (
-              <li key={itemIndex} className="mb-1" dangerouslySetInnerHTML={{ __html: item }} />
+              <li
+                key={itemIndex}
+                className="mb-1"
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
             ))}
           </ListTag>
         );
 
-      case 'quote':
+      case "quote":
         return (
-          <blockquote 
-            key={index} 
+          <blockquote
+            key={index}
             className={`border-l-4 border-purple-500 pl-6 my-6 ${
-              blockData.alignment === 'center' ? 'text-center' : ''
+              blockData.alignment === "center" ? "text-center" : ""
             }`}
           >
             <p className="text-lg italic text-gray-700 dark:text-gray-300 mb-2">
@@ -105,34 +119,39 @@ const EditorJsViewer: React.FC<EditorJsViewerProps> = ({ data }) => {
           </blockquote>
         );
 
-      case 'code':
+      case "code":
         return (
-          <pre 
-            key={index} 
+          <pre
+            key={index}
             className="bg-gray-900 dark:bg-gray-950 rounded-lg p-4 my-6 overflow-x-auto"
           >
-            <code className="text-green-400 text-sm">
-              {blockData.code}
-            </code>
+            <code className="text-green-400 text-sm">{blockData.code}</code>
           </pre>
         );
 
-      case 'table':
+      case "table":
         return (
           <div key={index} className="overflow-x-auto my-6">
             <table className="w-full border-collapse bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
               <tbody>
                 {blockData.content?.map((row: string[], rowIndex: number) => (
-                  <tr key={rowIndex} className={rowIndex === 0 ? 'bg-gray-50 dark:bg-gray-700' : 'hover:bg-gray-50 dark:hover:bg-gray-700'}>
+                  <tr
+                    key={rowIndex}
+                    className={
+                      rowIndex === 0
+                        ? "bg-gray-50 dark:bg-gray-700"
+                        : "hover:bg-gray-50 dark:hover:bg-gray-700"
+                    }
+                  >
                     {row.map((cell: string, cellIndex: number) => {
-                      const CellTag = rowIndex === 0 ? 'th' : 'td';
+                      const CellTag = rowIndex === 0 ? "th" : "td";
                       return (
                         <CellTag
                           key={cellIndex}
                           className={`px-4 py-3 text-left border-b border-gray-200 dark:border-gray-600 ${
-                            rowIndex === 0 
-                              ? 'text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider' 
-                              : 'text-sm text-gray-900 dark:text-gray-100'
+                            rowIndex === 0
+                              ? "text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                              : "text-sm text-gray-900 dark:text-gray-100"
                           }`}
                         >
                           {cell}
@@ -146,7 +165,7 @@ const EditorJsViewer: React.FC<EditorJsViewerProps> = ({ data }) => {
           </div>
         );
 
-      case 'delimiter':
+      case "delimiter":
         return (
           <div key={index} className="flex justify-center my-8">
             <div className="flex space-x-2">
@@ -157,23 +176,30 @@ const EditorJsViewer: React.FC<EditorJsViewerProps> = ({ data }) => {
           </div>
         );
 
-      case 'warning':
+      case "warning":
         return (
-          <div key={index} className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-4 my-6 rounded-r-lg">
+          <div
+            key={index}
+            className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-4 my-6 rounded-r-lg"
+          >
             <div className="flex items-center mb-2">
-              <span className="text-yellow-600 dark:text-yellow-400 font-medium">⚠️ {blockData.title}</span>
+              <span className="text-yellow-600 dark:text-yellow-400 font-medium">
+                ⚠️ {blockData.title}
+              </span>
             </div>
-            <p className="text-yellow-800 dark:text-yellow-200">{blockData.message}</p>
+            <p className="text-yellow-800 dark:text-yellow-200">
+              {blockData.message}
+            </p>
           </div>
         );
 
-      case 'embed':
+      case "embed":
         return (
           <div key={index} className="my-6">
             <div className="aspect-video">
               <iframe
                 src={blockData.embed}
-                title={blockData.caption || 'Embedded content'}
+                title={blockData.caption || "Embedded content"}
                 className="w-full h-full rounded-lg"
                 allowFullScreen
               />
@@ -186,19 +212,22 @@ const EditorJsViewer: React.FC<EditorJsViewerProps> = ({ data }) => {
           </div>
         );
 
-      case 'linkTool':
+      case "linkTool":
         return (
-          <div key={index} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 my-6 hover:shadow-md transition-shadow">
-            <a 
-              href={blockData.link} 
-              target="_blank" 
+          <div
+            key={index}
+            className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 my-6 hover:shadow-md transition-shadow"
+          >
+            <a
+              href={blockData.link}
+              target="_blank"
               rel="noopener noreferrer"
               className="block hover:text-purple-600 dark:hover:text-purple-400"
             >
               {blockData.meta?.image && (
-                <img 
-                  src={blockData.meta.image} 
-                  alt="" 
+                <img
+                  src={blockData.meta.image}
+                  alt=""
                   className="w-full h-32 object-cover rounded mb-3"
                 />
               )}
@@ -221,14 +250,24 @@ const EditorJsViewer: React.FC<EditorJsViewerProps> = ({ data }) => {
         // For unknown block types, try to render as text if possible
         if (blockData.text) {
           return (
-            <div key={index} className="my-4 p-3 bg-gray-100 dark:bg-gray-800 rounded border-l-4 border-gray-400">
-              <small className="text-gray-500 dark:text-gray-400">Unknown block type: {type}</small>
-              <p className="text-gray-700 dark:text-gray-300">{blockData.text}</p>
+            <div
+              key={index}
+              className="my-4 p-3 bg-gray-100 dark:bg-gray-800 rounded border-l-4 border-gray-400"
+            >
+              <small className="text-gray-500 dark:text-gray-400">
+                Unknown block type: {type}
+              </small>
+              <p className="text-gray-700 dark:text-gray-300">
+                {blockData.text}
+              </p>
             </div>
           );
         }
         return (
-          <div key={index} className="my-4 p-3 bg-gray-100 dark:bg-gray-800 rounded border-l-4 border-gray-400">
+          <div
+            key={index}
+            className="my-4 p-3 bg-gray-100 dark:bg-gray-800 rounded border-l-4 border-gray-400"
+          >
             <small className="text-gray-500 dark:text-gray-400">
               Unsupported block type: {type}
             </small>
