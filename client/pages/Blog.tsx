@@ -202,7 +202,7 @@ export default function Blog() {
                 <article className="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
                     <img
-                      src={post.image}
+                      src={post.coverImageUrl}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -224,14 +224,14 @@ export default function Blog() {
 
                   <div className="p-6">
                     <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                      {post.excerpt}
+                      {post.shortDescription}
                     </p>
 
                     <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
                       <div className="flex items-center space-x-4">
                         <span className="flex items-center">
                           <Calendar className="w-4 h-4 mr-1" />
-                          {formatDate(post.date)}
+                          {formatDate(post.dateCreated)}
                         </span>
                         <span className="flex items-center">
                           <Clock className="w-4 h-4 mr-1" />
@@ -242,7 +242,7 @@ export default function Blog() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-2">
-                        {post.tags.slice(0, 2).map((tag, tagIndex) => (
+                        {post.tages.slice(0, 2).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
                             className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
@@ -309,7 +309,7 @@ export default function Blog() {
                 <article className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
                     <img
-                      src={post.image}
+                      src={post.coverImageUrl}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
@@ -326,7 +326,7 @@ export default function Blog() {
                       {post.title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                      {post.excerpt}
+                      {post.shortDescription}
                     </p>
 
                     <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-3">
@@ -342,7 +342,7 @@ export default function Blog() {
 
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-gray-500 dark:text-gray-400">
-                        {formatDate(post.date)}
+                        {formatDate(post.dateCreated)}
                       </span>
                       <Link to={`/blog/${post.id}`}>
                         <Button
@@ -356,7 +356,7 @@ export default function Blog() {
                     </div>
 
                     <div className="flex flex-wrap gap-1 mt-3">
-                      {post.tags.slice(0, 2).map((tag, tagIndex) => (
+                      {post.tages.slice(0, 2).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
                           className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full"
@@ -364,9 +364,9 @@ export default function Blog() {
                           {tag}
                         </span>
                       ))}
-                      {post.tags.length > 2 && (
+                      {post.tages.length > 2 && (
                         <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-xs rounded-full">
-                          +{post.tags.length - 2}
+                          +{post.tages.length - 2}
                         </span>
                       )}
                     </div>
