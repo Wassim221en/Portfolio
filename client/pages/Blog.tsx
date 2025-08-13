@@ -54,7 +54,13 @@ export default function Blog() {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://eeb5b4db63f8.ngrok-free.app/api/Blog/GetAll`,
+          `https://localhost:7001/api/Blog/GetAll`,
+          {
+            headers: {
+              'accept': '*/*',
+              'ngrok-skip-browser-warning': 'true'
+            }
+          }
         );
 
         if (!response.ok) {
