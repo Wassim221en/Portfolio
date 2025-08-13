@@ -46,7 +46,7 @@ export default function Blog() {
     const fetchBlogPosts = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`api/Blog/GetAll`);
+        const response = await fetch(`https://eeb5b4db63f8.ngrok-free.app/api/Blog/GetAll`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
