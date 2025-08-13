@@ -1,7 +1,7 @@
 {
   "homepage": "https://github.com/wassim221e-web/",
   "name": "fusion-starter",
-  "proxy": "https://eeb5b4db63f8.ngrok-free.app"
+  "proxy": "https://eeb5b4db63f8.ngrok-free.app"و
   "private": true,
   "type": "module",
   "pkg": {
