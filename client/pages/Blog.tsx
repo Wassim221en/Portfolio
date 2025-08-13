@@ -9,6 +9,8 @@ import {
   User,
   BookOpen,
   Loader2,
+  Plus,
+  PenTool,
 } from "lucide-react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
