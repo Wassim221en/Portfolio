@@ -46,7 +46,7 @@ export default function Blog() {
     const fetchBlogPosts = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/Blog/GetAll");
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/Blog/GetAll`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
