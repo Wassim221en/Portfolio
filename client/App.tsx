@@ -8,6 +8,7 @@ import Store from "@/pages/Store";
 import React from 'react';
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import CreateBlog from "@/pages/CreateBlog";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Contact from "@/pages/Contact";
