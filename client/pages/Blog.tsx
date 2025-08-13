@@ -36,21 +36,62 @@ const categories = ["All", "Tech", "CSharp", "EFCore", "Programming", "ASP.NET",
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+  const [blogPosts, setBlogPosts] = useState<DisplayBlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<DisplayBlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch blog posts from API
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://localhost:7001/api/Blog/GetAll');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data: BlogPost[] = await response.json();
+
+        // Transform API data to display format
+        const transformedPosts: DisplayBlogPost[] = data.map((post, index) => ({
+          ...post,
+          category: post.tages[0] || "General", // Use first tag as category
+          author: "Wassim", // Default author
+          readTime: "5 min read", // Default read time
+          featured: index < 2, // Make first 2 posts featured
+        }));
+
+        setBlogPosts(transformedPosts);
+        setFilteredPosts(transformedPosts);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching blog posts:', err);
+        setError('Failed to load blog posts. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogPosts();
+  }, []);
 
   const filterPosts = (category: string, search: string = searchTerm) => {
     let filtered = blogPosts;
 
     if (category !== "All") {
-      filtered = filtered.filter((post) => post.category === category);
+      filtered = filtered.filter((post) =>
+        post.tages.some(tag => tag.toLowerCase() === category.toLowerCase())
+      );
     }
 
     if (search) {
       filtered = filtered.filter(
         (post) =>
           post.title.toLowerCase().includes(search.toLowerCase()) ||
-          post.excerpt.toLowerCase().includes(search.toLowerCase()) ||
-          post.tags.some((tag) =>
+          post.shortDescription.toLowerCase().includes(search.toLowerCase()) ||
+          post.tages.some((tag) =>
             tag.toLowerCase().includes(search.toLowerCase()),
           ),
       );
@@ -73,12 +114,50 @@ export default function Blog() {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
+    return date.toLocaleDateString("ar-SA", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
   };
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center">
+            <Loader2 className="w-12 h-12 animate-spin text-purple-600 mx-auto mb-4" />
+            <p className="text-lg text-gray-600 dark:text-gray-300">Loading blog posts...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center">
+            <div className="mb-4">
+              <Search className="w-16 h-16 text-red-300 mx-auto" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              Error Loading Blog Posts
+            </h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">
+              {error}
+            </p>
+            <Button onClick={() => window.location.reload()} className="bg-purple-600 hover:bg-purple-700">
+              Try Again
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
