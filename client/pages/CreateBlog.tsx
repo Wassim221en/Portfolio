@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import EditorJsEditor from '@/components/EditorJsEditor';
+import SimpleEditorJs from '@/components/SimpleEditorJs';
 import EditorJsViewer from '@/components/EditorJsViewer';
 
 interface BlogPostData {
@@ -117,7 +117,7 @@ export default function CreateBlog() {
 
       if (response.ok) {
         const savedPost = await response.json();
-        alert('تم حفظ المقا�� بنجاح!');
+        alert('تم حفظ المقال بنجاح!');
         navigate(`/blog/${savedPost.id}`);
       } else {
         throw new Error('فشل في حفظ المقال');
@@ -187,7 +187,7 @@ export default function CreateBlog() {
                 {/* Preview Header */}
                 <div className="mb-8">
                   <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                    {formData.title || 'عنوان الم��ال'}
+                    {formData.title || 'عنوان المقال'}
                   </h1>
                   <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
                     {formData.shortDescription || 'وصف المقال'}
