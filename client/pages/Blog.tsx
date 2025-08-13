@@ -31,7 +31,15 @@ interface DisplayBlogPost extends BlogPost {
   featured?: boolean;
 }
 
-const categories = ["All", "Tech", "CSharp", "EFCore", "Programming", "ASP.NET", "Tutorial"];
+const categories = [
+  "All",
+  "Tech",
+  "CSharp",
+  "EFCore",
+  "Programming",
+  "ASP.NET",
+  "Tutorial",
+];
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,7 +53,9 @@ export default function Blog() {
     const fetchBlogPosts = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://eeb5b4db63f8.ngrok-free.app/api/Blog/GetAll`);
+        const response = await fetch(
+          `https://eeb5b4db63f8.ngrok-free.app/api/Blog/GetAll`,
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -66,8 +76,8 @@ export default function Blog() {
         setFilteredPosts(transformedPosts);
         setError(null);
       } catch (err) {
-        console.error('Error fetching blog posts:', err);
-        setError('Failed to load blog posts. Please try again later.');
+        console.error("Error fetching blog posts:", err);
+        setError("Failed to load blog posts. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -81,7 +91,7 @@ export default function Blog() {
 
     if (category !== "All") {
       filtered = filtered.filter((post) =>
-        post.tages.some(tag => tag.toLowerCase() === category.toLowerCase())
+        post.tages.some((tag) => tag.toLowerCase() === category.toLowerCase()),
       );
     }
 
@@ -127,7 +137,9 @@ export default function Blog() {
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center">
             <Loader2 className="w-12 h-12 animate-spin text-purple-600 mx-auto mb-4" />
-            <p className="text-lg text-gray-600 dark:text-gray-300">Loading blog posts...</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Loading blog posts...
+            </p>
           </div>
         </div>
       </div>
@@ -146,10 +158,11 @@ export default function Blog() {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               Error Loading Blog Posts
             </h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-4">
-              {error}
-            </p>
-            <Button onClick={() => window.location.reload()} className="bg-purple-600 hover:bg-purple-700">
+            <p className="text-gray-500 dark:text-gray-400 mb-4">{error}</p>
+            <Button
+              onClick={() => window.location.reload()}
+              className="bg-purple-600 hover:bg-purple-700"
+            >
               Try Again
             </Button>
           </div>
