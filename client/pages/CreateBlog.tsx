@@ -282,7 +282,7 @@ export default function CreateBlog() {
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                     محتوى المقال
                   </h2>
-                  <EditorJsEditor
+                  <SimpleEditorJs
                     ref={editorRef}
                     onChange={handleEditorChange}
                     placeholder="ابدأ بكتابة مقالك هنا..."
