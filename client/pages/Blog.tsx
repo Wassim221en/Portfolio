@@ -1,266 +1,329 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
+  MapPin,
+  Copy,
+  Check,
+  ExternalLink,
+  Github,
   Calendar,
-  Clock,
   ArrowRight,
-  Search,
-  Tag,
+  Clock,
   User,
   BookOpen,
-  Loader2,
-  Plus,
-  PenTool,
+  Quote,
 } from "lucide-react";
-import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { PortfolioWork } from "@/components/PortfolioWork";
+import { Services } from "@/components/Services";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { recommendationsData } from "@/pages/Recommendations";
 
-// Blog post interface based on the API response
-interface BlogPost {
-  id: string;
-  title: string;
-  shortDescription: string;
-  tages: string[]; // Note: API has "tages" not "tags"
-  dateCreated: string;
-  coverImageUrl: string;
-}
+export default function Index() {
+  const [emailCopied, setEmailCopied] = useState(false);
 
-// Extended interface for display purposes
-interface DisplayBlogPost extends BlogPost {
-  category?: string;
-  author?: string;
-  readTime?: string;
-  featured?: boolean;
-}
+  // Featured projects data
+  const featuredProjects = [
+    {
+      id: 1,
+      title: "TaskFlow - Project Management App",
+      description:
+        "A comprehensive project management solution designed for modern teams. Features include task tracking, team collaboration, and progress visualization.",
+      category: "SaaS",
+      image: "https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg",
+      tags: ["UI/UX Design", "React", "Design System"],
+      year: "2024",
+      status: "Live",
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      id: 2,
+      title: "ShopEase - E-commerce Platform",
+      description:
+        "Modern e-commerce platform with focus on user experience and conversion optimization.",
+      category: "E-commerce",
+      image:
+        "https://images.pexels.com/photos/5716032/pexels-photo-5716032.jpeg",
+      tags: ["E-commerce", "Mobile Design", "UX Research"],
+      year: "2024",
+      status: "In Development",
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+  ];
 
-const categories = [
-  "All",
-  "Tech",
-  "CSharp",
-  "EFCore",
-  "Programming",
-  "ASP.NET",
-  "Tutorial",
-];
-export default function Blog() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [blogPosts, setBlogPosts] = useState<DisplayBlogPost[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<DisplayBlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // Featured blog posts data
+  const featuredBlogPosts = [
+    {
+      id: 1,
+      title: "The Future of Design Systems: Building for Scale",
+      excerpt:
+        "How modern design systems are evolving to meet the needs of growing organizations and complex products.",
+      category: "Design",
+      author: "Wassim Alshami",
+      date: "2024-03-15",
+      readTime: "8 min read",
+      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
+      tags: ["Design Systems", "Scalability", "Product Design"],
+    },
+    {
+      id: 2,
+      title: "User Research in the Age of AI: What's Changing?",
+      excerpt:
+        "Exploring how artificial intelligence is transforming user research methods and what designers need to know.",
+      category: "UX Research",
+      author: "Wassim Alshami",
+      date: "2024-03-12",
+      readTime: "6 min read",
+      image:
+        "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
+      tags: ["AI", "User Research", "Innovation"],
+    },
+  ];
 
-  // Fetch blog posts from API
-  useEffect(() => {
-    const fetchBlogPosts = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`https://localhost:7001/api/Blog/GetAll`, {
-          headers: {
-            accept: "*/*",
-            "ngrok-skip-browser-warning": "true",
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data: BlogPost[] = await response.json();
-
-        // Transform API data to display format
-        const transformedPosts: DisplayBlogPost[] = data.map((post, index) => ({
-          ...post,
-          category: post.tages[0] || "General", // Use first tag as category
-          author: "Wassim", // Default author
-          readTime: "5 min read", // Default read time
-          featured: index < 2, // Make first 2 posts featured
-        }));
-
-        setBlogPosts(transformedPosts);
-        setFilteredPosts(transformedPosts);
-        setError(null);
-      } catch (err) {
-        console.error("Error fetching blog posts:", err);
-        setError("Failed to load blog posts. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogPosts();
-  }, []);
-
-  const filterPosts = (category: string, search: string = searchTerm) => {
-    let filtered = blogPosts;
-
-    if (category !== "All") {
-      filtered = filtered.filter((post) =>
-        post.tages.some((tag) => tag.toLowerCase() === category.toLowerCase()),
-      );
-    }
-
-    if (search) {
-      filtered = filtered.filter(
-        (post) =>
-          post.title.toLowerCase().includes(search.toLowerCase()) ||
-          post.shortDescription.toLowerCase().includes(search.toLowerCase()) ||
-          post.tages.some((tag) =>
-            tag.toLowerCase().includes(search.toLowerCase()),
-          ),
-      );
-    }
-
-    setFilteredPosts(filtered);
-  };
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    filterPosts(category, searchTerm);
-  };
-
-  const handleSearchChange = (search: string) => {
-    setSearchTerm(search);
-    filterPosts(selectedCategory, search);
-  };
-
-  const featuredPosts = blogPosts.filter((post) => post.featured);
+  // Get first 2 recommendations for homepage preview
+  const homeRecommendations = recommendationsData.slice(0, 2);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("ar-SA", {
+    return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
   };
 
-  // Loading state
-  if (loading) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="flex items-center justify-center min-h-[400px]">
-          <div className="text-center">
-            <Loader2 className="w-12 h-12 animate-spin text-purple-600 mx-auto mb-4" />
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Loading blog posts...
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Error state
-  if (error) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="flex items-center justify-center min-h-[400px]">
-          <div className="text-center">
-            <div className="mb-4">
-              <Search className="w-16 h-16 text-red-300 mx-auto" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              Error Loading Blog Posts
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-4">{error}</p>
-            <Button
-              onClick={() => window.location.reload()}
-              className="bg-purple-600 hover:bg-purple-700"
-            >
-              Try Again
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("wassim221e@gmail.com");
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy email");
+    }
+  };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-      {/* Header */}
-      <ScrollAnimation direction="up">
-        <div className="text-center mb-16">
-          <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
-            <div className="flex-1">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                مدونة التقنية
-              </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                أفكار ونصائح حول تطوير البرمجيات، تجربة المستخدم، والعالم
-                المتطور للإبداع الرقمي.
-              </p>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      {/* Hero Section */}
+      <div className="mb-12 lg:mb-16">
+        <div className="mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2">
+            Hello! I'm Wassim Alshami
+          </h1>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Back End Developer
+            </h2>
+            <div className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 mt-2 sm:mt-0">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-base sm:text-lg">Syria</span>
             </div>
-            <div className="mt-6 lg:mt-0">
-              <Link to="/Portfolio/blog/create">
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl">
-                  <PenTool className="w-5 h-5 mr-2" />
-                  إنشاء مقال جديد
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Search Bar */}
-          <div className="max-w-md mx-auto relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchTerm}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
-            />
           </div>
         </div>
-      </ScrollAnimation>
 
-      {/* Featured Posts */}
-      <ScrollAnimation direction="up" delay={0.2}>
-        <section className="mb-20">
-          <div className="flex items-center mb-8">
-            <BookOpen className="w-6 h-6 text-purple-600 dark:text-purple-400 mr-3" />
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Featured Articles
-            </h2>
+        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mb-6 lg:mb-8">
+          I am Wassim Alshami, a back-end developer with over a year of
+          experience in ASP.NET. I specialize in designing high-performance
+          software and solving complex technical challenges. Passionate about
+          problem-solving, I’ve competed in the ICPC and local contests in
+          Syria, also serving as a coach. With 1,800+ problems solved on
+          Codeforces, I bring strong analytical skills to deliver efficient and
+          innovative solutions.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+          <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-medium w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+            <a
+              href="https://drive.google.com/file/d/1C7aeidZVG5FdZRj3iNylxKYXIQok_7Pb/view"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              My CV
+            </a>
+          </Button>
+          <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-medium w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
+            <a
+              href="https://gitlab.com/wassim221e"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              My GitLab
+            </a>
+          </Button>
+          <Button
+            variant="outline"
+            onClick={copyEmail}
+            className="border-2 border-gray-300 hover:border-gray-400 px-6 py-3 rounded-xl font-medium flex items-center justify-center space-x-2 w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-md"
+          >
+            {emailCopied ? (
+              <>
+                <Check className="w-4 h-4" />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-4 h-4" />
+                <span>Copy email</span>
+              </>
+            )}
+          </Button>
+        </div>
+      </div>
+
+      {/* Featured Projects Section */}
+      <ScrollAnimation direction="up">
+        <section className="mb-16 lg:mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Featured Projects
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Some of my recent work that I'm proud of
+              </p>
+            </div>
+            <Link to="/projects">
+              <Button variant="outline" className="flex items-center space-x-2">
+                <span>View All</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredPosts.map((post, index) => (
-              <ScrollAnimation key={post.id} direction="up" delay={0.1 * index}>
-                <article className="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+            {featuredProjects.map((project, index) => (
+              <ScrollAnimation
+                key={project.id}
+                direction="up"
+                delay={0.1 * index}
+              >
+                <div className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
                     <img
-                      src={post.coverImageUrl}
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute top-4 left-4">
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          project.status === "Live"
+                            ? "bg-green-100 text-green-700"
+                            : "bg-yellow-100 text-yellow-700"
+                        }`}
+                      >
+                        {project.status}
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4 flex space-x-2">
+                      <a
+                        href={project.liveUrl}
+                        className="p-2 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={project.githubUrl}
+                        className="p-2 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300 delay-75"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm text-purple-600 font-medium">
+                        {project.category}
+                      </span>
+                      <span className="text-sm text-gray-500 flex items-center">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {project.year}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </section>
+      </ScrollAnimation>
+
+      {/* Portfolio Work Section */}
+      <PortfolioWork />
+
+      {/* Featured Blog Posts Section */}
+      <ScrollAnimation direction="up">
+        <section className="mb-16 lg:mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Latest Articles
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Insights and thoughts on development and design
+              </p>
+            </div>
+            <Link to="/blog">
+              <Button variant="outline" className="flex items-center space-x-2">
+                <span>View All</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredBlogPosts.map((post, index) => (
+              <ScrollAnimation key={post.id} direction="up" delay={0.1 * index}>
+                <article className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <div className="aspect-video relative overflow-hidden">
+                    <img
+                      src={post.image}
                       alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-purple-600 text-white text-sm font-medium rounded-full">
-                        Featured
+                        {post.category}
                       </span>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-sm rounded-full mb-2">
-                        {post.category}
-                      </span>
-                      <h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
+                      <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
                         {post.title}
                       </h3>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                      {post.shortDescription}
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                      {post.excerpt}
                     </p>
 
-                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                       <div className="flex items-center space-x-4">
                         <span className="flex items-center">
                           <Calendar className="w-4 h-4 mr-1" />
-                          {formatDate(post.dateCreated)}
+                          {formatDate(post.date)}
                         </span>
                         <span className="flex items-center">
                           <Clock className="w-4 h-4 mr-1" />
@@ -271,10 +334,10 @@ export default function Blog() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-2">
-                        {post.tages.slice(0, 2).map((tag, tagIndex) => (
+                        {post.tags.slice(0, 2).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
+                            className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
                           >
                             {tag}
                           </span>
@@ -298,126 +361,74 @@ export default function Blog() {
         </section>
       </ScrollAnimation>
 
-      {/* All Posts */}
-      <ScrollAnimation direction="up" delay={0.3}>
-        <section>
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-0">
-              All Articles
-            </h2>
+      {/* Service Section */}
+      <Services />
 
-            {/* Category Filter */}
-            <div className="flex items-center space-x-2 overflow-x-auto pb-2 w-full lg:w-auto">
-              <Tag className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
-              <div className="flex space-x-2">
-                {categories.map((category) => (
-                  <Button
-                    key={category}
-                    variant={
-                      selectedCategory === category ? "default" : "outline"
-                    }
-                    size="sm"
-                    onClick={() => handleCategoryChange(category)}
-                    className={`whitespace-nowrap transition-all duration-200 ${
-                      selectedCategory === category
-                        ? "bg-purple-600 hover:bg-purple-700 text-white"
-                        : "border-gray-300 hover:border-purple-600 hover:text-purple-600"
-                    }`}
-                  >
-                    {category}
-                  </Button>
-                ))}
-              </div>
+      {/* Recommendations Section */}
+      <ScrollAnimation direction="up">
+        <section className="mb-16 lg:mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                What People Say
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Don't just take my word for it
+              </p>
             </div>
+            <Link to="/recommendations">
+              <Button variant="outline" className="flex items-center space-x-2">
+                <span>View All ({recommendationsData.length})</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
 
-          {/* Posts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
-              <ScrollAnimation key={post.id} direction="up" delay={0.1 * index}>
-                <article className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  <div className="aspect-video relative overflow-hidden">
-                    <img
-                      src={post.coverImageUrl}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2 py-1 bg-white/90 text-purple-600 text-xs font-medium rounded-full">
-                        {post.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                      {post.shortDescription}
-                    </p>
-
-                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-3">
-                      <span className="flex items-center">
-                        <User className="w-3 h-3 mr-1" />
-                        {post.author}
-                      </span>
-                      <span className="flex items-center">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {post.readTime}
-                      </span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {homeRecommendations.map((recommendation, index) => (
+              <ScrollAnimation
+                key={recommendation.id}
+                direction="up"
+                delay={0.1 * index}
+              >
+                <Card className="p-6 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-purple-100 dark:border-purple-800 h-full">
+                  <CardContent className="p-0 h-full flex flex-col">
+                    <div className="flex items-start space-x-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
+                        {recommendation.user.charAt(0)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-gray-900 dark:text-white text-lg">
+                          {recommendation.user}
+                        </h4>
+                        <p className="text-purple-600 dark:text-purple-400 text-sm font-medium">
+                          {recommendation.position}
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400 text-xs">
+                          {recommendation.company}
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-500 dark:text-gray-400">
-                        {formatDate(post.dateCreated)}
-                      </span>
-                      <Link to={`/blog/${post.id}`}>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 p-1.5"
-                        >
-                          <ArrowRight className="w-3 h-3" />
-                        </Button>
-                      </Link>
+                    <div className="flex-1">
+                      <Quote className="w-6 h-6 text-purple-300 dark:text-purple-600 mb-3" />
+                      <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed italic text-sm line-clamp-4">
+                        "{recommendation.body}"
+                      </blockquote>
                     </div>
-
-                    <div className="flex flex-wrap gap-1 mt-3">
-                      {post.tages.slice(0, 2).map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                      {post.tages.length > 2 && (
-                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-xs rounded-full">
-                          +{post.tages.length - 2}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </article>
+                  </CardContent>
+                </Card>
               </ScrollAnimation>
             ))}
           </div>
 
-          {filteredPosts.length === 0 && (
-            <div className="text-center py-12">
-              <div className="mb-4">
-                <Search className="w-16 h-16 text-gray-300 mx-auto" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                No articles found
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Try adjusting your search or filter criteria.
-              </p>
-            </div>
-          )}
+          <div className="text-center mt-8">
+            <Link to="/recommendations">
+              <Button className="bg-purple-600 hover:bg-purple-700">
+                Read All Recommendations
+              </Button>
+            </Link>
+          </div>
         </section>
       </ScrollAnimation>
     </div>

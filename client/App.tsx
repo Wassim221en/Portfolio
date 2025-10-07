@@ -49,7 +49,6 @@ function App() {
           <Route path="Portfolio/store" element={<Store />} />
           <Route path="Portfolio/blog" element={<Blog />} />
           <Route path="Portfolio/blog/create" element={<CreateBlog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="Portfolio/contact" element={<Contact />} />
           <Route path="Portfolio/*" element={<NotFound />} />
         </Routes>
