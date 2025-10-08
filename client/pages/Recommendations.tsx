@@ -1,7 +1,5 @@
 import {
   Quote,
-  Star,
-  Calendar,
   Building,
   MapPin,
   ExternalLink,
@@ -14,91 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
-import {Loading} from "@/components/Loading";
-interface Recommendation {
-  id: string;
-  recommender_name: string;
-  recommender_title: string;
-  recommender_company: string;
-  recommender_location: string;
-  recommendation_text: string;
-  linkedin_url: string;
-  recommendation_date: string;
-}
-export const recommendationsData = [
-  {
-    id: 1,
-    user: "Adel Abobacker",
-    position: "Senior WordPress Developer",
-    company: "Freelancer",
-    location: "Syria",
-    imageUrl: "",
-    body: "Wassim Alshami is an exceptional back-end developer with expertise in ASP.NET and problem-solving. He excels in performance optimization, scalable architecture, and high code quality. A great team player, he shares knowledge and tackles challenges efficiently. I highly recommend him!",
-    rating: 5,
-    date: "2024-07-15",
-    linkedinUrl: "#",
-  },
-  {
-    id: 2,
-    user: "Ahmed Hassan",
-    position: "Project Manager",
-    company: "Tech Solutions Ltd",
-    location: "Dubai, UAE",
-    imageUrl: "",
-    body: "Working with Wassim was a pleasure. His technical expertise in backend development, particularly with ASP.NET Core and database optimization, helped us deliver our project on time and within budget. His problem-solving skills and attention to detail are remarkable.",
-    rating: 5,
-    date: "2024-06-20",
-    linkedinUrl: "#",
-  },
-  {
-    id: 3,
-    user: "Sara Mahmoud",
-    position: "Senior Software Engineer",
-    company: "Innovation Hub",
-    location: "Aleppo, Syria",
-    imageUrl: "",
-    body: "Wassim's knowledge of competitive programming and algorithmic thinking brings a unique perspective to software development. His code is clean, efficient, and well-documented. He's also an excellent mentor who helped our team improve their coding practices.",
-    rating: 5,
-    date: "2024-05-30",
-    linkedinUrl: "#",
-  },
-  {
-    id: 4,
-    user: "Omar Al-Rashid",
-    position: "Lead Developer",
-    company: "Digital Craft Agency",
-    location: "Damascus, Syria",
-    imageUrl: "",
-    body: "Wassim demonstrated exceptional skills during our collaboration. His expertise in microservices architecture and API design significantly improved our system's performance. He's reliable, professional, and always delivers high-quality work.",
-    rating: 5,
-    date: "2024-04-25",
-    linkedinUrl: "#",
-  },
-  {
-    id: 5,
-    user: "Dr. Layla Mustafa",
-    position: "Computer Science Professor",
-    company: "Aleppo University",
-    location: "Aleppo, Syria",
-    imageUrl: "",
-    body: "As Wassim's instructor, I witnessed his exceptional analytical abilities and dedication to learning. His performance in competitive programming and his coaching skills make him stand out. He has the potential to make significant contributions to any development team.",
-    rating: 5,
-    date: "2024-03-15",
-    linkedinUrl: "#",
-  },
-  {
-    id: 6,
-    user: "Khaled Nour",
-    position: "DevOps Engineer",
-    company: "CloudTech Solutions",
-    location: "Beirut, Lebanon",
-    imageUrl: "",
-    body: "Wassim's understanding of modern development practices and his ability to write scalable, maintainable code is impressive. He seamlessly integrated with our DevOps pipeline and helped optimize our deployment processes. A true professional!",
-    rating: 5,
-    date: "2024-02-10",
-    linkedinUrl: "#",
-  },
-];
 interface Recommendation {
   id: string;
   recommender_name: string;
@@ -199,22 +112,13 @@ export default function Recommendations() {
     }
   };
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`w-4 h-4 ${i < rating ? "text-yellow-400 fill-current" : "text-gray-300"}`}
-      />
-    ));
-  };
+  
 
 
-  const averageRating =
-    recommendationsData.reduce((acc, rec) => acc + rec.rating, 0) /
-    recommendationsData.length;
+  
   console.assert(recommendations);
   if (loading) {
-    return <Loading text="LOADING..." />;
+    return <p className="text-center py-20">Loading recommendations...</p>;
   }
 
   return (
@@ -231,18 +135,9 @@ export default function Recommendations() {
             collaborative approach.
           </p>
 
-          {/* Rating Summary */}
           <div className="flex flex-col items-center gap-4 mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-1">
-                {renderStars(Math.round(averageRating))}
-              </div>
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                {averageRating.toFixed(1)}
-              </span>
-              <span className="text-gray-600 dark:text-gray-300">
-                ({recommendationsData.length} recommendations)
-              </span>
+            <div className="text-gray-600 dark:text-gray-300">
+              ({recommendations.length} recommendations)
             </div>
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>

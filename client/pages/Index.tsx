@@ -19,7 +19,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PortfolioWork } from "@/components/PortfolioWork";
 import { Services } from "@/components/Services";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import { recommendationsData } from "@/pages/Recommendations";
 
 export default function Index() {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -84,8 +83,29 @@ export default function Index() {
     },
   ];
 
-  // Get first 2 recommendations for homepage preview
-  const homeRecommendations = recommendationsData.slice(0, 2);
+  // Get first 2 recommendations for homepage preview (fetched)
+  type HomeRecommendation = { id: string; user: string; position: string; company: string; body: string };
+  const [homeRecommendations, setHomeRecommendations] = useState<HomeRecommendation[]>([]);
+  const [recommendationsCount, setRecommendationsCount] = useState(0);
+  useEffect(() => {
+    fetch("https://wassim221e.pythonanywhere.com/api/recommendations/getall")
+      .then((res) => res.json())
+      .then((data: any[]) => {
+        setRecommendationsCount(Array.isArray(data) ? data.length : 0);
+        const mapped = (Array.isArray(data) ? data : []).map((rec: any) => ({
+          id: rec.id || rec._id || `${rec.recommender_name}-${rec.recommendation_date}`,
+          user: rec.recommender_name,
+          position: rec.recommender_title,
+          company: rec.recommender_company,
+          body: rec.recommendation_text,
+        }));
+        setHomeRecommendations(mapped.slice(0, 2));
+      })
+      .catch(() => {
+        setHomeRecommendations([]);
+        setRecommendationsCount(0);
+      });
+  }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -202,7 +222,7 @@ export default function Index() {
                 Some of my recent work that I'm proud of
               </p>
             </div>
-            <Link to="/projects">
+            <Link to="/Portfolio/projects">
               <Button variant="outline" className="flex items-center space-x-2">
                 <span>View All</span>
                 <ArrowRight className="w-4 h-4" />
@@ -299,7 +319,7 @@ export default function Index() {
                 Insights and thoughts on development and design
               </p>
             </div>
-            <Link to="/blog">
+            <Link to="/Portfolio/blog">
               <Button variant="outline" className="flex items-center space-x-2">
                 <span>View All</span>
                 <ArrowRight className="w-4 h-4" />
@@ -359,7 +379,7 @@ export default function Index() {
                           </span>
                         ))}
                       </div>
-                      <Link to={`/blog/${post.id}`}>
+                      <Link to={`/Portfolio/blog/${post.id}`}>
                         <Button
                           variant="ghost"
                           size="sm"
@@ -392,9 +412,9 @@ export default function Index() {
                 Don't just take my word for it
               </p>
             </div>
-            <Link to="/recommendations">
+            <Link to="/Portfolio/recommendations">
               <Button variant="outline" className="flex items-center space-x-2">
-                <span>View All ({recommendationsData.length})</span>
+                <span>View All ({recommendationsCount})</span>
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
@@ -439,7 +459,7 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-8">
-            <Link to="/recommendations">
+            <Link to="/Portfolio/recommendations">
               <Button className="bg-purple-600 hover:bg-purple-700">
                 Read All Recommendations
               </Button>
