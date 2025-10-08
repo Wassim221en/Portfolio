@@ -9,7 +9,17 @@ import {
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
+import { useEffect, useState } from "react";
+interface Recommendation {
+  id: string;
+  recommender_name: string;
+  recommender_title: string;
+  recommender_company: string;
+  recommender_location: string;
+  recommendation_text: string;
+  linkedin_url: string;
+  recommendation_date: string;
+}
 export const recommendationsData = [
   {
     id: 1,
@@ -84,8 +94,32 @@ export const recommendationsData = [
     linkedinUrl: "#",
   },
 ];
-
+interface Recommendation {
+  id: string;
+  recommender_name: string;
+  recommender_title: string;
+  recommender_company: string;
+  recommender_location: string;
+  recommendation_text: string;
+  linkedin_url: string;
+  recommendation_date: string;
+}
 export default function Recommendations() {
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetch("https://wassim221e.pythonanywhere.com/api/recommendations/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        setRecommendations(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch recommendations:", err);
+        setLoading(false);
+      });
+  }, []);
+  
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -103,10 +137,15 @@ export default function Recommendations() {
       />
     ));
   };
+  
 
   const averageRating =
     recommendationsData.reduce((acc, rec) => acc + rec.rating, 0) /
     recommendationsData.length;
+    console.assert(recommendations);
+    if (loading) {
+    return <p className="text-center py-20">Loading recommendations...</p>;
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
@@ -139,9 +178,9 @@ export default function Recommendations() {
 
       {/* Recommendations Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {recommendationsData.map((recommendation, index) => (
+        {recommendations.map((rec, index) => (
           <ScrollAnimation
-            key={recommendation.id}
+            key={rec.id}
             direction="up"
             delay={0.1 * index}
           >
@@ -151,31 +190,31 @@ export default function Recommendations() {
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-start space-x-4 flex-1">
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
-                      {recommendation.user.charAt(0)}
+                      {rec.recommender_name.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-gray-900 dark:text-white text-lg mb-1">
-                        {recommendation.user}
+                        {rec.recommender_name}
                       </h3>
                       <p className="text-purple-600 dark:text-purple-400 font-medium text-sm mb-1">
-                        {recommendation.position}
+                        {rec.recommender_title}
                       </p>
                       <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-2">
                         <Building className="w-3 h-3 mr-1" />
                         <span className="truncate">
-                          {recommendation.company}
+                          {rec.recommender_company}
                         </span>
                       </div>
                       <div className="flex items-center text-gray-500 dark:text-gray-400 text-xs">
                         <MapPin className="w-3 h-3 mr-1" />
-                        <span>{recommendation.location}</span>
+                        <span>{rec.recommender_location}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* External link */}
                   <a
-                    href={recommendation.linkedinUrl}
+                    href={rec.linkedin_url}
                     className="p-2 text-gray-400 hover:text-purple-600 transition-colors flex-shrink-0"
                     title="View LinkedIn Profile"
                   >
@@ -185,11 +224,8 @@ export default function Recommendations() {
 
                 {/* Rating */}
                 <div className="flex items-center space-x-2 mb-4">
-                  <div className="flex items-center space-x-1">
-                    {renderStars(recommendation.rating)}
-                  </div>
                   <span className="text-sm text-gray-500">
-                    {formatDate(recommendation.date)}
+                    {formatDate(rec.recommendation_date)}
                   </span>
                 </div>
 
@@ -197,7 +233,7 @@ export default function Recommendations() {
                 <div className="flex-1">
                   <Quote className="w-8 h-8 text-purple-200 dark:text-purple-600 mb-4" />
                   <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed italic">
-                    "{recommendation.body}"
+                    "{rec.recommendation_text }"
                   </blockquote>
                 </div>
               </CardContent>
