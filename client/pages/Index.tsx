@@ -19,69 +19,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PortfolioWork } from "@/components/PortfolioWork";
 import { Services } from "@/components/Services";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-
+import { categories, projects } from "@/components/projects";
+import { blogPosts } from "@/components/blogs";
 export default function Index() {
   const [emailCopied, setEmailCopied] = useState(false);
-
-  // Featured projects data
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "TaskFlow - Project Management App",
-      description:
-        "A comprehensive project management solution designed for modern teams. Features include task tracking, team collaboration, and progress visualization.",
-      category: "SaaS",
-      image: "https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg",
-      tags: ["UI/UX Design", "React", "Design System"],
-      year: "2024",
-      status: "Live",
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      id: 2,
-      title: "ShopEase - E-commerce Platform",
-      description:
-        "Modern e-commerce platform with focus on user experience and conversion optimization.",
-      category: "E-commerce",
-      image:
-        "https://images.pexels.com/photos/5716032/pexels-photo-5716032.jpeg",
-      tags: ["E-commerce", "Mobile Design", "UX Research"],
-      year: "2024",
-      status: "In Development",
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-  ];
-
-  // Featured blog posts data
-  const featuredBlogPosts = [
-    {
-      id: 1,
-      title: "The Future of Design Systems: Building for Scale",
-      excerpt:
-        "How modern design systems are evolving to meet the needs of growing organizations and complex products.",
-      category: "Design",
-      author: "Wassim Alshami",
-      date: "2024-03-15",
-      readTime: "8 min read",
-      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
-      tags: ["Design Systems", "Scalability", "Product Design"],
-    },
-    {
-      id: 2,
-      title: "User Research in the Age of AI: What's Changing?",
-      excerpt:
-        "Exploring how artificial intelligence is transforming user research methods and what designers need to know.",
-      category: "UX Research",
-      author: "Wassim Alshami",
-      date: "2024-03-12",
-      readTime: "6 min read",
-      image:
-        "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
-      tags: ["AI", "User Research", "Innovation"],
-    },
-  ];
 
   // Get first 2 recommendations for homepage preview (fetched)
   type HomeRecommendation = { id: string; user: string; position: string; company: string; body: string };
@@ -231,7 +172,7 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <ScrollAnimation
                 key={project.id}
                 direction="up"
@@ -304,8 +245,6 @@ export default function Index() {
         </section>
       </ScrollAnimation>
 
-      {/* Portfolio Work Section */}
-      <PortfolioWork />
 
       {/* Featured Blog Posts Section */}
       <ScrollAnimation direction="up">
@@ -328,7 +267,7 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredBlogPosts.map((post, index) => (
+            {blogPosts.map((post, index) => (
               <ScrollAnimation key={post.id} direction="up" delay={0.1 * index}>
                 <article className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">

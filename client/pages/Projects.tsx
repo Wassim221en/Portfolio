@@ -2,102 +2,8 @@ import { useState } from "react";
 import { ExternalLink, Github, Calendar, Tag, Filter } from "lucide-react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
+import { categories, projects } from "@/components/projects";
 
-const categories = [
-  "All",
-  "Web Design",
-  "Mobile App",
-  "SaaS",
-  "E-commerce",
-  "Design System",
-];
-
-const projects = [
-  {
-    id: 1,
-    title: "TaskFlow - Project Management App",
-    description:
-      "A comprehensive project management solution designed for modern teams. Features include task tracking, team collaboration, and progress visualization.",
-    category: "SaaS",
-    image: "https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg",
-    tags: ["UI/UX Design", "React", "Design System"],
-    year: "2024",
-    status: "Live",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "ShopEase - E-commerce Platform",
-    description:
-      "Modern e-commerce platform with focus on user experience and conversion optimization. Includes admin dashboard and mobile app.",
-    category: "E-commerce",
-    image: "https://images.pexels.com/photos/5716032/pexels-photo-5716032.jpeg",
-    tags: ["E-commerce", "Mobile Design", "UX Research"],
-    year: "2024",
-    status: "In Development",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "HealthTech Mobile App",
-    description:
-      "Healthcare mobile application for patient monitoring and doctor consultations. Features include appointment scheduling and health tracking.",
-    category: "Mobile App",
-    image: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
-    tags: ["Mobile App", "Healthcare", "User Research"],
-    year: "2023",
-    status: "Live",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Creative Agency Website",
-    description:
-      "Portfolio website for a creative agency specializing in brand identity and digital experiences. Focus on visual storytelling.",
-    category: "Web Design",
-    image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
-    tags: ["Web Design", "Branding", "Animation"],
-    year: "2023",
-    status: "Live",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Financial Dashboard",
-    description:
-      "Complex data visualization dashboard for financial analytics. Includes real-time charts, reports, and portfolio management tools.",
-    category: "SaaS",
-    image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg",
-    tags: ["Data Visualization", "Dashboard", "Finance"],
-    year: "2023",
-    status: "Live",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Design System Library",
-    description:
-      "Comprehensive design system for a SaaS company. Includes components, guidelines, and documentation for consistent user experiences.",
-    category: "Design System",
-    image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg",
-    tags: ["Design System", "Components", "Documentation"],
-    year: "2023",
-    status: "Live",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-];
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -155,11 +61,10 @@ export default function Projects() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-4 left-4">
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          project.status === "Live"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-yellow-100 text-yellow-700"
-                        }`}
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === "Live"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-yellow-100 text-yellow-700"
+                          }`}
                       >
                         {project.status}
                       </span>
@@ -233,11 +138,10 @@ export default function Projects() {
                     }
                     size="sm"
                     onClick={() => filterProjects(category)}
-                    className={`whitespace-nowrap transition-all duration-200 ${
-                      selectedCategory === category
-                        ? "bg-purple-600 hover:bg-purple-700 text-white"
-                        : "border-gray-300 hover:border-purple-600 hover:text-purple-600"
-                    }`}
+                    className={`whitespace-nowrap transition-all duration-200 ${selectedCategory === category
+                      ? "bg-purple-600 hover:bg-purple-700 text-white"
+                      : "border-gray-300 hover:border-purple-600 hover:text-purple-600"
+                      }`}
                   >
                     {category}
                   </Button>
@@ -264,11 +168,10 @@ export default function Projects() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-3 left-3">
                       <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          project.status === "Live"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-yellow-100 text-yellow-700"
-                        }`}
+                        className={`px-2 py-1 rounded-full text-xs font-medium ${project.status === "Live"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-yellow-100 text-yellow-700"
+                          }`}
                       >
                         {project.status}
                       </span>

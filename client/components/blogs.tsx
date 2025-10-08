@@ -1,0 +1,107 @@
+
+export const blogPosts = [
+  {
+    id: 1,
+    title: 'Building Scalable APIs with ASP.NET Core',
+    excerpt: 'Discover how to architect and build high-performance APIs using ASP.NET Core for modern applications.',
+    content: 'ASP.NET Core has become a top choice for backend development thanks to its performance, modularity, and cross-platform capabilities...',
+    category: 'Backend',
+    author: 'Wassim Alshami',
+    date: '2024-03-15',
+    readTime: '8 min read',
+    image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg',
+    tags: ['ASP.NET Core', 'API', 'Scalability'],
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'Authentication & Authorization in ASP.NET Core',
+    excerpt: 'Learn how to secure your backend applications with modern authentication and authorization techniques.',
+    content: 'Security is a critical part of any backend system. ASP.NET Core offers a powerful Identity framework, JWT authentication, and policy-based authorization...',
+    category: 'Security',
+    author: 'Wassim Alshami',
+    date: '2024-03-12',
+    readTime: '6 min read',
+    image: 'https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg',
+    tags: ['Authentication', 'Authorization', 'Identity', 'JWT'],
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'Top 10 ASP.NET Core Middleware Every Developer Should Know',
+    excerpt: 'Boost your backend with these essential middleware components to handle requests, errors, and more.',
+    content: 'Middleware is at the heart of the ASP.NET Core pipeline. Understanding how to use and create middleware can greatly enhance your app’s functionality...',
+    category: 'Tips',
+    author: 'Wassim Alshami',
+    date: '2024-03-10',
+    readTime: '5 min read',
+    image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg',
+    tags: ['Middleware', 'ASP.NET Core', 'Best Practices'],
+    featured: false
+  },
+  {
+    id: 4,
+    title: 'Case Study: From Idea to Deployment with ASP.NET Core',
+    excerpt: 'Follow a real-world example of building and deploying a production-ready backend using ASP.NET Core.',
+    content: 'This case study covers the entire journey of backend development: architecture, data access, security, testing, and deployment...',
+    category: 'Case Study',
+    author: 'Wassim Alshami',
+    date: '2024-03-08',
+    readTime: '12 min read',
+    image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg',
+    tags: ['Case Study', 'Deployment', 'Backend'],
+    featured: false
+  },
+  {
+    id: 5,
+    title: 'Optimizing Performance in ASP.NET Core Applications',
+    excerpt: 'Learn how caching, async programming, and configuration tuning can drastically improve backend performance.',
+    content: 'Performance optimization is key for modern APIs. Techniques like response caching, async/await, and database connection pooling can make a big difference...',
+    category: 'Performance',
+    author: 'Wassim Alshami',
+    date: '2024-03-05',
+    readTime: '7 min read',
+    image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg',
+    tags: ['Performance', 'Caching', 'Async'],
+    featured: false
+  },
+  {
+    id: 6,
+    title: 'Building RESTful APIs: Best Practices with ASP.NET Core',
+    excerpt: 'A practical guide to designing clean, maintainable, and RESTful APIs using ASP.NET Core.',
+    content: 'RESTful APIs remain the backbone of many modern applications. ASP.NET Core offers tools to implement them with clarity and structure...',
+    category: 'API Design',
+    author: 'Wassim Alshami',
+    date: '2024-03-02',
+    readTime: '10 min read',
+    image: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg',
+    tags: ['REST', 'API', 'Best Practices'],
+    featured: false
+  },
+  {
+    id: 7,
+    title: 'Entity Framework Core: Rapid Data Access for ASP.NET Core',
+    excerpt: 'Learn how to integrate EF Core to simplify database interactions and speed up development.',
+    content: 'Entity Framework Core is Microsoft’s lightweight ORM that enables developers to work with databases using .NET objects...',
+    category: 'Data Access',
+    author: 'Wassim Alshami',
+    date: '2024-02-28',
+    readTime: '6 min read',
+    image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg',
+    tags: ['EF Core', 'Database', 'ORM'],
+    featured: false
+  },
+  {
+    id: 8,
+    title: 'gRPC in ASP.NET Core: High-Performance Communication',
+    excerpt: 'Discover how gRPC provides a faster alternative to REST for service-to-service communication.',
+    content: 'gRPC is becoming popular for backend microservices. ASP.NET Core offers first-class support for building efficient gRPC services...',
+    category: 'Architecture',
+    author: 'Wassim Alshami',
+    date: '2024-02-25',
+    readTime: '9 min read',
+    image: 'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg',
+    tags: ['gRPC', 'Microservices', 'ASP.NET Core'],
+    featured: false
+  }
+];
