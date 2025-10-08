@@ -51,12 +51,12 @@ const socialLinks = [
   },
   {
     name: "Github",
-    href: "https://wa.me/963933719221?text=Hello%2C%20Wassim",
+    href: "https://github.com/Wassim221en",
     icon: Github,
   },
   {
     name: "Gitlab",
-    href: "https://wa.me/963933719221?text=Hello%2C%20Wassim",
+    href: "https://gitlab.com/wassim221e/",
     icon: Gitlab,
   },
 ];
