@@ -96,6 +96,7 @@ export const blogPosts = [
     title: 'gRPC in ASP.NET Core: High-Performance Communication',
     excerpt: 'Discover how gRPC provides a faster alternative to REST for service-to-service communication.',
     content: 'gRPC is becoming popular for backend microservices. ASP.NET Core offers first-class support for building efficient gRPC services...',
+    full_content: "",
     category: 'Architecture',
     author: 'Wassim Alshami',
     date: '2024-02-25',
@@ -103,5 +104,85 @@ export const blogPosts = [
     image: 'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg',
     tags: ['gRPC', 'Microservices', 'ASP.NET Core'],
     featured: false
+  },
+  {
+    id: 9,
+    title: 'Refresh Tokens in SaaS: Secure Authentication Done Right',
+    excerpt: 'Learn how to implement refresh tokens securely using hashing, rotation, and proper data modeling in ASP.NET Core.',
+    content: 'Refresh tokens play a crucial role in maintaining user sessions in modern SaaS applications. Unlike short-lived access tokens, refresh tokens enable long-term authentication without repeated logins...',
+    text: `
+  🚀 How to Properly Handle Refresh Tokens in Modern SaaS Applications
+  When building authentication flows with JWT in multi-tenant SaaS systems, access tokens alone are not enough. Since access tokens usually have a short lifetime (e.g., 15 minutes), we need a secure way to keep users logged in without asking them to re-authenticate all the time.
+👉 That’s where refresh tokens come in.
+
+🧠 What is a Refresh Token?
+
+A refresh token is a long-lived credential issued alongside the access token. It allows the client to request new access tokens without asking the user to log in again. Typically, refresh tokens live for weeks or months.
+
+🛡️ Secure Storage: Hash, Don’t Store Plain Text
+
+Never store refresh tokens as plain text in your database.
+Instead:
+
+Generate a cryptographically secure random string (e.g., 32 bytes).
+
+Store only its hash (e.g., SHA-256) in the database.
+
+Return the plain token to the client only once.
+
+This way, even if the database is leaked, attackers can’t reuse stolen refresh tokens.
+
+🔄 Rotation: The Modern Standard
+
+In professional SaaS systems, rotating refresh tokens is a must:
+
+User logs in → Receives AccessToken + RefreshToken (R1).
+
+Later, the client uses R1 to refresh → Server issues R2 and invalidates R1.
+
+Any reuse of R1 afterwards is detected and treated as suspicious.
+
+This rotation flow significantly reduces the risk of replay attacks and allows for better session control across devices.
+
+🧱 Data Model Example
+
+A typical RefreshToken entity might include:
+
+UserId → Link to the user
+
+TokenHash → Securely stored hash
+
+ExpiresAt → Token lifetime
+
+IsUsed & IsRevoked → Track usage & revocation
+
+DeviceId, IpAddress → Optional, for multi-device sessions and auditing
+
+This gives you fine-grained control to revoke tokens per device, detect suspicious activity, and maintain a clear session history.
+
+🧠 Key Takeaways
+
+✅ Always hash refresh tokens before storing them.
+
+🔄 Implement token rotation for better security.
+
+📅 Set reasonable expiration periods (e.g., 30–90 days).
+
+🌐 Track device/IP for multi-device SaaS scenarios.
+
+🚨 Detect and handle token reuse to prevent replay attacks.
+
+Authentication is often overlooked, but refresh tokens are the backbone of secure, scalable session management in modern SaaS systems. If you get this part right early on, you’ll avoid a lot of pain later. 🔐
+
+Would you like me to make it sound a bit more personal / thought-leader style (like “I learned this building a real SaaS”)? 🧠✨
+`,
+    category: 'Security',
+    author: 'Wassim Alshami',
+    date: '2025-10-12',
+    readTime: '7 min read',
+    image: 'https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg',
+    tags: ['Refresh Tokens', 'Authentication', 'ASP.NET Core', 'SaaS'],
+    featured: false
   }
+
 ];
