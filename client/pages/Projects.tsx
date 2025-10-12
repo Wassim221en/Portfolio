@@ -183,12 +183,16 @@ export default function Projects() {
                       >
                         <ExternalLink className="w-3 h-3" />
                       </a>
-                      <a
-                        href={project.githubUrl}
-                        className="p-1.5 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 duration-300 delay-75"
-                      >
-                        <Github className="w-3 h-3" />
-                      </a>
+                      {project.githubUrl && project.githubUrl !== "#" && (
+                        <a
+                          href={project.githubUrl}
+                          className="p-1.5 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 duration-300 delay-75"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-3 h-3" />
+                        </a>
+                      )}
                     </div>
                   </div>
                   <div className="p-5">

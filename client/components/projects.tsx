@@ -9,7 +9,7 @@ export const categories = [
   "Web App"
 ];
 
-export  const projects = [
+export const projects = [
   {
     id: 1,
     title: "Bronz",
@@ -20,7 +20,7 @@ export  const projects = [
     imageSource: "https://play.google.com/store/apps/details?id=com.elkood.bronze",
     tags: ["E-commerce", "Mobile App", "Backend (ASP.NET Core)"],
     year: "2024",
-    status: "Live",
+    status: "Finished",
     liveUrl: "https://play.google.com/store/apps/details?id=com.elkood.bronze",
     projectPage: "https://elkood.com/en/projects/bronz-app/",
     githubUrl: "#",
@@ -36,7 +36,7 @@ export  const projects = [
     imageSource: "https://play.google.com/store/apps/details?id=com.elkood.mazayah",
     tags: ["Logistics", "Shipping", "Backend (ASP.NET Core)"],
     year: "2023",
-    status: "Live",
+    status: "Finished",
     liveUrl: "https://play.google.com/store/apps/details?id=com.elkood.mazayah",
     projectPage: "https://mazzaya.elkood.com/",
     githubUrl: "#",
@@ -52,7 +52,7 @@ export  const projects = [
     imageSource: "https://play.google.com/store/apps/details?id=com.elkood.fly_order.fly_order",
     tags: ["Food Delivery", "Logistics", "Backend (ASP.NET Core)"],
     year: "2023",
-    status: "Live",
+    status: "Finished",
     liveUrl: "https://play.google.com/store/apps/details?id=com.elkood.fly_order.fly_order",
     projectPage: "https://elkood.com/en/category/mobile-applications/",
     githubUrl: "#",
@@ -68,7 +68,7 @@ export  const projects = [
     imageSource: "https://play.google.com/store/apps/details?id=com.elkood.be_the_best",
     tags: ["Education", "E-learning", "Backend (ASP.NET Core)"],
     year: "2025",
-    status: "Live",
+    status: "Finished",
     liveUrl: "https://play.google.com/store/apps/details?id=com.elkood.be_the_best",
     projectPage: "https://play.google.com/store/apps/developer?id=elKood",
     githubUrl: "#",
@@ -84,7 +84,7 @@ export  const projects = [
     imageSource: "https://play.google.com/store/apps/details?id=com.elkood.royalbutton",
     tags: ["POS", "Inventory", "Backend (ASP.NET Core)"],
     year: "2025",
-    status: "Live",
+    status: "Finished",
     liveUrl: "https://play.google.com/store/apps/details?id=com.elkood.royalbutton",
     projectPage: "https://apkpure.com/royal-button-pos/com.elkood.royalbutton",
     githubUrl: "#",
@@ -100,7 +100,7 @@ export  const projects = [
     imageSource: "https://wassim221en.github.io/Cp_Training/",
     tags: ["Competitive Programming", "Education", "Web App", "Backend (ASP.NET Core)"],
     year: "2025",
-    status: "Live",
+    status: "In Development",
     liveUrl: "https://wassim221en.github.io/Cp_Training/",
     projectPage: "https://wassim221en.github.io/Cp_Training/",
     githubUrl: "https://github.com/wassim221en/Cp_Training",
@@ -116,10 +116,27 @@ export  const projects = [
     imageSource: "https://play.google.com/store/apps/details?id=com.elkood.pytha_course",
     tags: ["Education", "POS", "Backend (ASP.NET Core)"],
     year: "2024",
-    status: "Live",
+    status: "Finished",
     liveUrl: "https://play.google.com/store/apps/details?id=com.elkood.pytha_course",
     projectPage: "https://elkood.com/en/category/mobile-applications/", // company page lists the app
     githubUrl: "#",
     featured: true
   },
+  {
+    "id": 8,
+    "title": "ElectroSaaS",
+    "description":
+      "A SaaS (Software as a Service) platform for managing and running electronics online stores — product catalog, inventory sync, order processing, subscription billing, multi-tenant admin dashboards, and API integrations. I’m building the backend and core infrastructure: tenant isolation, payment & billing engine, product/inventory APIs, authorization & roles, and integrations with logistics and supplier systems.",
+    "category": "E-commerce / SaaS",
+    "image": "images/cmd.png",
+    "imageSource": "https://github.com/Wassim221en/Cmd",
+    "tags": ["E-commerce", "SaaS", "Backend (e.g. ASP.NET Core / Node.js)"],
+    "year": "2025",
+    "status": "In Development",
+    "liveUrl": "—",
+    "projectPage": "images/cptraining.png",
+    "githubUrl": "https://github.com/Wassim221en/Cmd",
+    "featured": false
+  }
+
 ];

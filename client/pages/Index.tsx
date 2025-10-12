@@ -121,16 +121,7 @@ export default function Index() {
             >
               My CV
             </a>
-          </Button>
-          <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-medium w-full sm:w-auto transition-all duration-200 transform hover:scale-105 hover:shadow-lg">
-            <a
-              href="https://gitlab.com/wassim221e"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              My GitLab
-            </a>
-          </Button>
+          </Button> 
           <Button
             variant="outline"
             onClick={copyEmail}

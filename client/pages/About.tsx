@@ -217,8 +217,7 @@ export default function About() {
           <ScrollAnimation direction="left" delay={0.2}>
             <div className="prose prose-lg text-gray-600 dark:text-gray-300 mb-12">
               <p className="text-lg leading-relaxed mb-6">
-                I am Wassim Alshami, a back-end developer with over a year of
-                experience in ASP.NET. I specialize in designing
+                I am Wassim Al Shami, a back-end developer with over 2 years of experience in ASP.NET. I specialize in designing
                 high-performance software and solving complex technical
                 challenges. Passionate about problem-solving, I’ve competed in
                 the ICPC and local contests in Syria, also serving as a coach.
