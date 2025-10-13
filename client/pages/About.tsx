@@ -39,6 +39,7 @@ import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Services } from "@/components/Services";
 import { url } from "inspector";
 import CodeforcesCard from "@/components/ProblemSolved";
+import { SmartImage } from "@/components/SmartImage";
 export default function About() {
   const tools = [
     // Languages & Frameworks
@@ -145,7 +146,7 @@ export default function About() {
       company: "Elkood",
       period: "Apr 2024 -  July 2025",
       description: "",
-      icon: "images/elkood.png",
+      icon: "/elkood.png",
       url: "https://elkood.com/en",
     },
   ];
@@ -166,7 +167,7 @@ export default function About() {
       period: "2023",
       description:
         "Qualified for the Syrian National Finals representing Aleppo University, among the top teams nationwide.",
-      icon: Trophy,
+      icon: "icpc.png",
       url: "https://drive.google.com/file/d/1-KQLF-xnZjfSvWMgfgbbBQBGHF5z2Vq5/view?usp=drive_link",
     },
     {
@@ -175,7 +176,7 @@ export default function About() {
       period: "2023",
       description:
         "Ranked 4th out of dozens of teams in the regional Aleppo university-level contest.",
-      icon: Award,
+      icon: "icpc.png",
       url: "https://drive.google.com/file/d/14OW0VFmLjjxgD7R8zSLj5aDZGVsCQBnl/view",
     },
     {
@@ -184,7 +185,7 @@ export default function About() {
       period: "2024",
       description:
         "Achieved 8th place in the Aleppo-level programming contest, demonstrating continued performance and commitment.",
-      icon: Award,
+      icon: "icpc.png",
       url: "",
     },
     {
@@ -193,7 +194,7 @@ export default function About() {
       period: "Aug 2024",
       description:
         "Coached the University of Cordoba team for the ICPC Syria National Finals, focusing on advanced problem-solving, contest strategy, and team coordination.",
-      icon: Braces,
+      icon: "icpc.png",
       url: "https://drive.google.com/file/d/14OW0VFmLjjxgD7R8zSLj5aDZGVsCQBnl/view?usp=sharing",
     },
   ];
@@ -248,11 +249,7 @@ export default function About() {
                       <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 transition-transform duration-300 hover:scale-105 cursor-pointer">
                         <div className="flex items-start space-x-4">
                           <div className="bg-blue-100 dark:bg-blue-900/30 p-5 rounded-2xl">
-                            <img
-                              src={exp.icon}
-                              alt={`${exp.company} Logo`}
-                              className="w-11 h-11 rounded-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
-                            />
+                            <SmartImage name={exp.icon.split('.')[0]} alt={`${exp.company} Logo`} className="w-11 h-11 rounded-lg transition-transform duration-300 hover:scale-105 cursor-pointer" />
                           </div>
                           <div className="flex-1">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
@@ -302,11 +299,7 @@ export default function About() {
                       <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-transform duration-300 hover:scale-105 cursor-pointer">
                         <div className="flex items-start space-x-4">
                           <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
-                            <img
-                              src="images/icpc.png"
-                              alt={`ICPC Logo`}
-                              className="w-11 h-1 rounded-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
-                            />
+                            <SmartImage name={edu.icon.split('.')[0]} alt={`${edu.school} Logo`} className="w-11 h-11 rounded-lg transition-transform duration-300 hover:scale-105 cursor-pointer" />
                           </div>
                           <div className="flex-1">
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
@@ -427,10 +420,7 @@ export default function About() {
             <ScrollAnimation direction="right" delay={0.3}>
               <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl p-8 mb-8 shadow-inner">
                 <div className="w-48 h-48 rounded-2xl overflow-hidden mx-auto shadow-lg border-4 border-white">
-                  <img
-                    src="images/wassim.png"
-                    className="w-full h-full object-cover"
-                  />
+                  <SmartImage name="wassim" alt={`wassim`} className="w-full h-full object-cover" />
                 </div>
               </div>
             </ScrollAnimation>

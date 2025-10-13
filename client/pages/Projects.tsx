@@ -3,7 +3,7 @@ import { ExternalLink, Github, Calendar, Tag, Filter } from "lucide-react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { categories, projects } from "@/components/projects";
-
+import { SmartImage } from "@/components/SmartImage";
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -53,11 +53,7 @@ export default function Projects() {
               >
                 <div className="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                    <SmartImage name={project.image.split('.')[0]} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-4 left-4">
                       <span
@@ -76,12 +72,16 @@ export default function Projects() {
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
-                      <a
-                        href={project.githubUrl}
-                        className="p-2 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300 delay-75"
-                      >
-                        <Github className="w-4 h-4" />
-                      </a>
+                      {project.githubUrl && project.githubUrl !== "#" && (
+                        <a
+                          href={project.githubUrl}
+                          className="p-1.5 bg-white/90 rounded-lg text-gray-700 hover:bg-white transition-colors opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 duration-300 delay-75"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-3 h-3" />
+                        </a>
+                      )}
                     </div>
                   </div>
                   <div className="p-6">
@@ -160,11 +160,7 @@ export default function Projects() {
               >
                 <div className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <div className="aspect-video relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+                    <SmartImage name={project.image.split('.')[0]} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-3 left-3">
                       <span

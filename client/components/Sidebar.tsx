@@ -17,6 +17,7 @@ import {
 import { SiCodeforces, SiWhatsapp } from "react-icons/si";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
+import {SmartImage} from "@/components/SmartImage"
 import App from "@/App";
 
 const navigation = [
@@ -72,11 +73,7 @@ export function Sidebar() {
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-lg">
               <div className="w-12 h-12 rounded-full overflow-hidden">
-                <img
-                  src="images/wassim.png"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
+                <SmartImage name="wassim" alt="Profile" className="w-full h-full object-cover" />
               </div>
             </div>
             <div>
