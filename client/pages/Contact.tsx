@@ -65,12 +65,12 @@ export default function Contact() {
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent("Hi Wassim! I found your portfolio and would like to get in touch.");
-    const whatsappUrl = `https://wa.me/+96181123456?text=${message}`; // Replace with actual WhatsApp number
+    const whatsappUrl = `https://wa.me/+963933719221?text=${message}`; // Replace with actual WhatsApp number
     window.open(whatsappUrl, '_blank');
   };
 
   const handleLinkedIn = () => {
-    window.open('https://linkedin.com/in/wassim221e', '_blank'); // Replace with actual LinkedIn profile
+    window.open('https://www.linkedin.com/in/wassim-alshami-wassim221e/', '_blank'); // Replace with actual LinkedIn profile
   };
 
   return (
@@ -191,7 +191,7 @@ export default function Contact() {
                   <MapPin className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-muted-foreground">Lebanon</p>
+                    <p className="text-muted-foreground">Syria/Aleppo</p>
                   </div>
                 </div>
               </CardContent>
