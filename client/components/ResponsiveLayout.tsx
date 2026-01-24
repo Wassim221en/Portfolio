@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Sidebar } from "./Sidebar";
 import { PageTransition } from "./PageTransition";
 import { useSwipeGesture } from "@/hooks/use-swipe-gesture";
-
+import { SmartImage } from "./SmartImage";
 interface ResponsiveLayoutProps {
   children: React.ReactNode;
 }
@@ -80,11 +80,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
             {/* Profile info on mobile */}
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 rounded-full overflow-hidden">
-                <img
-                  src="images/wassim.png"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
+                <SmartImage name="wassim" alt="Profile" className="w-full h-full object-cover" />
               </div>
 
               <div className="text-right">
