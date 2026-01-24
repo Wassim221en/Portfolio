@@ -39,18 +39,18 @@ function App() {
       <MatomoTracker />
       <ResponsiveLayout>
         <Routes>
-          <Route path="Portfolio/" element={<Index />} />
-          <Route path="Portfolio/projects" element={<Projects />} />
-          <Route path="Portfolio/about" element={<About />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<About />} />
           <Route
-            path="Portfolio/recommendations"
+            path="/recommendations"
             element={<Recommendations />}
           />
-          <Route path="Portfolio/store" element={<Store />} />
-          <Route path="Portfolio/blog" element={<Blog />} />
-          <Route path="Portfolio/blog/create" element={<CreateBlog />} />
-          <Route path="Portfolio/contact" element={<Contact />} />
-          <Route path="Portfolio/*" element={<NotFound />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/create" element={<CreateBlog />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </ResponsiveLayout>
     </BrowserRouter>

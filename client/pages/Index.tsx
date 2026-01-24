@@ -155,7 +155,7 @@ export default function Index() {
                 Some of my recent work that I'm proud of
               </p>
             </div>
-            <Link to="/Portfolio/projects">
+            <Link to="/projects">
               <Button variant="outline" className="flex items-center space-x-2">
                 <span>View All</span>
                 <ArrowRight className="w-4 h-4" />
@@ -250,7 +250,7 @@ export default function Index() {
                 Insights and thoughts on development and design
               </p>
             </div>
-            <Link to="/Portfolio/blog">
+            <Link to="/blog">
               <Button variant="outline" className="flex items-center space-x-2">
                 <span>View All</span>
                 <ArrowRight className="w-4 h-4" />
@@ -310,7 +310,7 @@ export default function Index() {
                           </span>
                         ))}
                       </div>
-                      <Link to={`/Portfolio/blog/${post.id}`}>
+                      <Link to={`/blog/${post.id}`}>
                         <Button
                           variant="ghost"
                           size="sm"
@@ -343,7 +343,7 @@ export default function Index() {
                 Don't just take my word for it
               </p>
             </div>
-            <Link to="/Portfolio/recommendations">
+            <Link to="/recommendations">
               <Button variant="outline" className="flex items-center space-x-2">
                 <span>View All ({recommendationsCount})</span>
                 <ArrowRight className="w-4 h-4" />
@@ -390,7 +390,7 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-8">
-            <Link to="/Portfolio/recommendations">
+            <Link to="/recommendations">
               <Button className="bg-purple-600 hover:bg-purple-700">
                 Read All Recommendations
               </Button>

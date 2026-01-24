@@ -21,17 +21,17 @@ import {SmartImage} from "@/components/SmartImage"
 import App from "@/App";
 
 const navigation = [
-  { name: "Homepage", href: "/Portfolio/", icon: Home },
-  { name: "Projects", href: "/Portfolio/projects", icon: FolderOpen },
-  { name: "About", href: "/Portfolio/about", icon: User },
+  { name: "Homepage", href: "/", icon: Home },
+  { name: "Projects", href: "/projects", icon: FolderOpen },
+  { name: "About", href: "/about", icon: User },
   {
     name: "Recommendations",
-    href: "/Portfolio/recommendations",
+    href: "/recommendations",
     icon: ThumbsUp,
   },
-  { name: "Store", href: "/Portfolio/store", icon: ShoppingBag },
-  { name: "Blog", href: "/Portfolio/blog", icon: FileText },
-  { name: "Contact", href: "/Portfolio/contact", icon: Mail },
+  { name: "Store", href: "/store", icon: ShoppingBag },
+  { name: "Blog", href: "/blog", icon: FileText },
+  { name: "Contact", href: "/contact", icon: Mail },
 ];
 
 const socialLinks = [
